@@ -10,3 +10,15 @@
 
 \renewcommand{\Re}{\textrm{Re}}
 \renewcommand{\Im}{\textrm{Im}}
+
+% Figures. Example usage:
+% \quickfig{\columnwidth}{my_image}{This is the caption}{fig:my_fig}
+\newcommand{\quickfig}[4]{
+\begin{figure}
+\begin{centering}
+\includegraphics[width=#1]{#2}
+\par\end{centering}
+\caption{#3}
+\label{#4}
+\end{figure}
+}
