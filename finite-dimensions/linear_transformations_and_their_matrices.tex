@@ -1,8 +1,8 @@
-\section{Linear Transformations and their Matrices}
+\levelstay{Linear Transformations and their Matrices}
 In this section we formally introduce linear transformations and matrices.  We will pay special attention to the fact that while linear transformations on vector spaces have meaning independant of bases, matrices do not.  The matrix that represents a given linear transformation depends on the basis in which it is expressed.  Our discussion will assume that the domain and range of our linear transformations are the same vector space.  This is done to prevent awkward sentences and is not really necessary; our results remain valid in the more general case in which the domain and range are not the same space.
 
 %%%subsection Linear Transformations%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Linear Transformations}
+\leveldown{Linear Transformations}
 It turns out that linear transformations are everywhere in math and physics. Here's a formal definition:
 
 %%Definition of linear transformation
@@ -30,7 +30,7 @@ To show that $T$ is linear we consider two charge distributions, $\rho_1$ and $\
 This purpose of this example is to show you that linear transformations come in many guises.  In particular, many of the laws of physics involving derivatives and integrals may be understood from the mathematical point of view of linear transformations because both differentiation and integration are linear transformations: $\frac{d}{dx}(af + bg) = a(\frac{df}{dx}) + b(\frac{dg}{dx})$ and $\int(af + bg) = a\int{f} + b\int{g}$. The other fact that makes Coulomb's law linear is that the existence of two charge distributions $\rho_1$ and $\rho_2$ is equivalent to one distribution $\rho_1 + \rho_2$.
 
 %%%subsection Inner Products%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Inner Products}
+\levelstay{Inner Products}
 Before we continue our discussion of linear operators we have to introduce inner products.  We make a convention:
 
 \textit{For now we deal only with real vector spaces.  We will generalize to complex vector spaces at the end of this chapter}.\footnote{You may be asking yourself what other fields there are besides the real and complex numbers.  One example is the set of 2 by 2 matrices with nonvanishing determinant; they can be added together or multiplied and have additive and multiplicative inverses.}
@@ -72,7 +72,7 @@ as you can readily check.  This equation is quite obvious so you might wonder wh
 \end{itemize}
 
 %%%subsection MATRIX ELEMENTS%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Matrix Elements}
+\levelstay{Matrix Elements}
 When we learn about linear transformations in linear algebra courses we are usually thinking in the context of matrices.  However, as we have just seen in the example of the mapping between charge distributions and electric potentials, a linear transformation can occur as an integral operation having no obvious relation to matrices.  In the finite dimensional case any linear transformation can be \emph{represented} by a matrix so long as a basis is specified.  The matrix representing a transformation will depend on the choice of basis.  Keep this in mind as we now investigate the relationship between linear transformations, bases, and matrices.
 
 The first step is to understand what matrix elements are.  What information do they contain?  To answer this question consider what happends when we multiply a matrix on the right by a basis vector,
@@ -104,7 +104,7 @@ $d$. Consider two linear transformations $S$ and $T$ which have matrices $[S]$ a
 \item[2)] $a$. Consider the linear transformation $R_{\theta}$ of rotation by $\theta$ radians counterclockwise in the two dimensional plane.  Construct the matrix for $R_{\theta}$ in the basis composed of the two unit vectors along the x and y axes.\\$b$.  Use the results of part $a$ of this exercise and part $d$ of the previous exercise to come up with a cute way to derive the sum identities for sine and cosine.
 \end{itemize}
 %%%subsection - Dual Transformations and Eigenvectors%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Dual Transformations and Eigenvectors}
+\levelstay{Dual Transformations and Eigenvectors}
 Assume in this section that all matrices are taken with respect to one particular basis.  We will not write the superscript basis label as it is to be understood.
 
 Anyone reading this document has transposed a matrix.  Now we can ask, if a matrix represents an abstract linear transformation what does its transpose represent?  We can investigate this question by looking at inner products.  Let $[v]$ and $[w]$ be the matrices for two vectors $\ket{v}$ and $\ket{w}$ and let $[T]$ be the matrix for transformation $T$.  Look at the inner product of $\ket{v}$ and $\ket{Tw}$,\footnote{Recall that for any two matrices $[A]$ and $[B]$ we have $ ([A][B])^{\top} = [B]^{\top}[A]^{\top}$.}\footnote{Also recall that $\sim$ means ``is represented by.''}
@@ -155,7 +155,7 @@ In fact, finding a basis that diagonalizes a linear transformation is one of the
 \end{itemize}
 
 %%%subsection Changing Basis%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Changing Basis}
+\levelstay{Changing Basis}
 Everything we've discussed has aimed to get us to this section.  We can use equations (\ref{eq:vectorcomp}) and (\ref{eq:matrixelement}) to see how vector components and matrix elements change when we change basis.  Consider the following problem that occurs all of the time in classical mechanics, quantum mechanics, electrodynamics and all other branches of physics.  Let $\ket{v}$ be a vector in a vector space $\VS{}$.  Suppose we have some basis $e$ for $\VS{}$ and suppose that we know the components of $\ket{v}$ in this basis, ie. we know the numbers $v^e_i = \braket{e_i}{v}$.  Then $\ket{v}$ is represented in this basis by the column matrix,
 \begin{displaymath}
 [v]^e = \left[ \begin{array}{c} v^e_1 \\ \vdots \\ v^e_n \end{array} \right] \end{displaymath}

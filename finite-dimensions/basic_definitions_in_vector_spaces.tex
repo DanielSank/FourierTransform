@@ -1,8 +1,8 @@
-\section{Basic Definitions in Vector Spaces}
+\levelstay{Basic Definitions in Vector Spaces}
 In this section we define and study the basic objects with which we will work.
 It is assumed that the reader has already learned about these basic objects and so we focus on more complicated examples that may be new.
 
-\subsection{Vector Spaces}
+\leveldown{Vector Spaces}
 
 \newtheorem{definition}{Definition}
 \begin{definition}[Vector Space]
@@ -31,7 +31,7 @@ The symbol $\ket{\phantom{v}}$, called a \textbf{ket}, indicates a vector.
 The symbol inside the ket, whether it be the letter $v$, the name John, or any other symbol, must be understood as a lable, a name, for the vector.
 Keep in mind that $\ket{v+w}$ is simply a shorthand for writing the vector that is the sum $\ket{v} + \ket{w}$.
 
-\subsubsection{Examples of vector spaces}
+\leveldown{Examples of vector spaces}
 \begin{enumerate}
 \item The set of all real valued functions defined on the interval [0,1] taken over the field of the real numbers.  This is a vector space because if a and b are numbers and f and g are functions defined on [0,1] then \mbox{(a + b) (f + g) = af + ag + bf + bg} which is another function defined on [0,1].
 \item The set of complex numbers $\ket{z}$, over the field of real numbers.
@@ -79,7 +79,7 @@ where again $\sim$ means ``is represented by''.
 We have transformed a group of objects that math knows nothing about, i.e. two boxes, three springs, and two walls, to a set of two numbers which we can work on with our mathematical tools.
 We will see that the set of possible states $\ket{\Psi (t)}$ of the system forms a vector space.\begin{flushright} $\clubsuit$ \end{flushright}
 
-\subsection{Bases and Dimension}
+\levelup{Bases and Dimension}
 
 The next objects we must talk about are bases for vector spaces.
 Even though the idea of a vector space basis is not new to readers of this document we will define them here if only because they will be so important in everything that follows.
@@ -117,7 +117,7 @@ Given a vector space \textbf{V} with basis $e$ the dimension of \textbf{V} is th
 
 This definition of dimension may seem to depend on the choice of basis for $\VS{}$ but since every basis of a given vector space has the same number of elements the dimension of a vector space $\VS{}$ depends only on $\VS{}$ and not the choice of basis.
 
-\subsubsection{Examples of Bases and Dimension}
+\leveldown{Examples of Bases and Dimension}
 \begin{enumerate}
 \item The vectors $\ket{e_1} = \ket{1} = 1$ and $\ket{e_2} = \ket{i} = i$ form a basis for the vector space of complex numbers over the field of real numbers.
 Clearly $1$ and $i$ are both complex numbers so that property \textit{1} is satisfied.
@@ -180,7 +180,8 @@ It is \emph{represented} by the matrix in equation (\ref{eq:equationOfMotionMatr
 In order to decouple the differential equations we want to find a different basis $Y$ in which the matrix representation of $P$ is diagonal.
 \begin{flushright} $\clubsuit$ \end{flushright}
 
-\subsection{Exercises}
+\levelup{Exercises}
 \begin{itemize}
 \item[1)] Show that if we work in a new basis $Y$ in which the matrix in equation (\ref{eq:equationOfMotionMatrix}) were diagonal then the equations decouple and are easily solved.
 \end{itemize}
+
