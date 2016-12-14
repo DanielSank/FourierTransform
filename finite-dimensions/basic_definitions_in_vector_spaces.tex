@@ -1,21 +1,20 @@
 \levelstay{Vector space basics}
-In this section we define and study the basic objects with which we will work.
-It is assumed that the reader has already learned about these basic objects and so we focus on more complicated examples that may be new.
+In this section we define and study the basic properties of vectors.
+It is assumed that the reader has learned about vectors before, so we focus on \emph{examples} of vector spaces that may be new.
 
 \leveldown{Definition}
 
 \newtheorem{definition}{Definition}
 \begin{definition}[Vector Space]
-A vector space \textbf{V} consists of three things: a collection of vectors $\{\ket{v}\}$, an addition operation denoted by $+$, and a scalar field \textit{\textbf{S}}.\footnote{A scalar field is a set of objects that can be added and multiplied such that every element has both an additive and multiplicative inverse.
+A vector space \textbf{V} consists of three things: a collection of vectors $\{\ket{v}\}$, an addition operation denoted by $+$, and a scalar field \textit{\textbf{S}} with the following properties: \footnote{A scalar field is a set of objects that can be added and multiplied such that every element has both an additive and multiplicative inverse.
 The most common examples are the real numbers $\mathbb{R}$ and the complex numbers $\mathbb{C}$.}
-The following properties must be satisfied:
 \begin{enumerate}
 \item If $\ket{v}$ and $\ket{w}$ are both vectors in \textbf{V} then their sum $\ket{v} + \ket{w}$ is another vector in \textbf{V}.
 In symbols we could write,
 \begin{equation*}
-\forall \, \ket{v}, \ket{w} \in \textbf{V}, \ket{v+w} \equiv \ket{v} + \ket{w} \in \textbf{V} \, .
+\forall \, \ket{v}, \ket{w} \in \textbf{V}, \ket{v} + \ket{w} \in \textbf{V} \, .
 \end{equation*}
-In English this equation is read ``The sum of the vector named `v' and another vector named `w' is a third vector named `$v+w$'.''
+In English this equation is read ``The sum of the vector named `v' and another vector named `w' is also a vector''.
 
 \item Multiplication of a vector by a scalar yields a vector: if $\ket{v}$ is a vector in \textbf{V} and $a$ is a scalar in \textbf{S}, then $a\ket{v}$ is a vector in \textbf{V}.
 
@@ -38,8 +37,9 @@ A vector space over the real numbers is called a \textbf{real vector space}, whi
 
 The symbol $\ket{\phantom{v}}$, called a \textbf{ket}, indicates a vector.
 The symbol inside the ket, whether it be the letter $v$, the name ``John'', or any other symbol, is just a name for the vector.
-Keep in mind that $\ket{v+w}$ is simply a shorthand for writing the vector that is the sum $\ket{v} + \ket{w}$.
-The symbol ``$v+w$'' inside the ket is just a label.
+By convention, the vector $\ket{v} + \ket{w}$ is denoted $\ket{v+w}$.
+Keep in mind that the symbol ``$v+w$'' inside the ket is just a label, but as in this case, the label conveys useful information about the vector's value.
+
 Two other notations for vectors in common use are $\vec{v}$ and $\mathbf{v}$.
 We use the ket notation because it's unambiguous and very common in physics.
 
@@ -59,7 +59,7 @@ In this case we define addition by the equation
 This space is called $\mathbb{R}^n$.
 \end{enumerate}
 The vector space in example 4 is particularly interesting and important because it can be used to represent \emph{any} finite dimensional real vector space imaginable (we'll talk about this in depth in the next section).
-For example, the vector space of example 2, the complex numbers over the reals, can be represented by the set of 2-tuples where the first entry represents the real part and the second entry represents the imaginary part.
+For example, the vector space of example 2, the complex numbers over the reals, can be \emph{represented} by the set of 2-tuples where the first entry represents the real part and the second entry represents the imaginary part.
 In this representation a complex number $z$ is written
 \begin{equation*}
 z = x + iy \sim (x,y)
@@ -135,8 +135,7 @@ z = \Re(z) \ket{1} + \Im(z) \ket{i}
 \end{displaymath}
 where $\Im(z)$ and $\Re(z)$ are both real numbers, \emph{3}. The decomposition is obviously unique.
 As there are two basis vectors, the space of complex numbers over the real numbers is two dimensional.\footnote{In this example the vector space is two dimensional because we're using the reals as the field.
-If we take the complex numbers over the complex numbers, then a basis could be formed by just $\ket{1}$, because any complex number $z$ could be decomposed as $z = z\,\ket{1}$.
-In this case, the space is one dimensional.}
+If we take the complex numbers over the complex numbers, then a basis could be formed by just $\ket{1}$, because any complex number $z$ could be decomposed as $z = z\,\ket{1}$, and in this case, the space is one dimensional.}
 \item The polynomials $\{1, x,x^{2}\}$ form a basis for the space of polynomials of degree two: by definition any polynomial of degree two has the form $a_0 + a_1 x + a_2 x^2$ where the coefficients $a_i$ are uniquely determined by the polynomial in question.
 The dimension is 3.
 \item For the vector space $\mathbb{R}^n$ we have the obvious basis
@@ -150,7 +149,7 @@ Now let's apply this idea of bases to our physical problem.
 \begin{flushleft} $\clubsuit$ \end{flushleft}
 We already pointed out that the numbers $x_1(t)$ and $x_2(t)$ can be put into a tuple and considered an element in $\mathbb{R}^2$
 So, the configuration space of the box-and-spring system is a vector space, but how is this \emph{useful}?
-We can think of equation (\ref{eq:Newton}) as a matrix equation,
+Well, we can think of equation (\ref{eq:Newton}) as a matrix equation,
 \begin{equation} \label{eq:equationOfMotionMatrix}
 \left[ \begin{array}{c} \ddot{x}_1(t) \\ \ddot{x}_2(t) \end{array} \right] = \omega^{2}_{0}\left[ \begin{array}{cc} -2 & 1 \\ 1 & -2 \end{array} \right] \left[ \begin{array}{c} x_{1}(t) \\ x_{2}(t) \end{array} \right] \, .
 \end{equation}
