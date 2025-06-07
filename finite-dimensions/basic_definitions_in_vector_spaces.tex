@@ -1,91 +1,107 @@
 \levelstay{Vector space basics}
+
 In this section we define and study the basic properties of vectors.
-It is assumed that the reader has learned about vectors before, so we focus on \emph{examples} of vector spaces that may be new.
+It is assumed that the reader has learned about vectors before, so we focus on examples of vector spaces that may be new.
 
 \leveldown{Definition}
 
 \newtheorem{definition}{Definition}
 \begin{definition}[Vector Space]
-A vector space \textbf{V} consists of three things: a collection of vectors $\{\ket{v}\}$, an addition operation denoted by $+$, and a scalar field \textit{\textbf{S}} with the following properties: \footnote{A scalar field is a set of objects that can be added and multiplied such that every element has both an additive and multiplicative inverse.
-The most common examples are the real numbers $\mathbb{R}$ and the complex numbers $\mathbb{C}$.}
+A vector space \textbf{V} consists of three things: a collection of vectors $\{\ket{v}\}$, an addition operation denoted by $+$, and a scalar field $\Scalars$ with the following properties: \footnote{A scalar field is a set of objects that can be added and multiplied such that every element has both an additive and multiplicative inverse.
+The most common examples are the real numbers $\reals$ and the complex numbers $\complexes$.}
 \begin{enumerate}
-\item If $\ket{v}$ and $\ket{w}$ are both vectors in \textbf{V} then their sum $\ket{v} + \ket{w}$ is another vector in \textbf{V}.
+  \item If $\ket{v}$ and $\ket{w}$ are both vectors in \textbf{V} then their sum $\ket{v} + \ket{w}$ is another vector in \textbf{V}.
 In symbols we could write,
-\begin{equation*}
-\forall \, \ket{v}, \ket{w} \in \textbf{V}, \ket{v} + \ket{w} \in \textbf{V} \, .
-\end{equation*}
-In English this equation is read ``The sum of the vector named `v' and another vector named `w' is also a vector''.
+  \begin{equation*}
+    \forall \, \ket{v}, \ket{w} \in \textbf{V}, \ket{v} + \ket{w} \in \textbf{V} \, .
+  \end{equation*}
+  In English this equation is read ``The sum of the vector named `v' and another vector named `w' is also a vector''.
 
-\item Multiplication of a vector by a scalar yields a vector: if $\ket{v}$ is a vector in \textbf{V} and $a$ is a scalar in \textbf{S}, then $a\ket{v}$ is a vector in \textbf{V}.
+  \item Multiplication of a vector by a scalar yields a vector: if $\ket{v}$ is a vector in \textbf{V} and $a$ is a scalar in \textbf{S}, then $a\ket{v}$ is a vector in \textbf{V}.
 
-\item There is a vector $0$ called ``zero'' or ``the zero vector'' such that for any vector $\ket{v}$ in \textbf{V} we have $\ket{v} + 0 = \ket{v}$.\footnote{Note that we don't put the $\ket{\,}$ symbol around $0$.
-This is because $\ket{0}$ is often used to denote a vector which is \emph{not the zero vector!}
-The symbol $0$ also refers to the zero element in the field $\textit{\textbf{S}}$, this is ok because multiplying any vector by the zero element of $\textit{\textbf{S}}$ yields the zero vector.}
+  \item There is a vector $0$ called ``zero'' or ``the zero vector'' such that for any vector $\ket{v}$ in \textbf{V} we have $\ket{v} + 0 = \ket{v}$.\footnote{Note that we don't put the $\ket{\,}$ symbol around $0$.
+  This is because $\ket{0}$ is often used to denote a vector which is not the zero vector.
+  In particular, $\ket{0}$ often refers to the ground state of a quantum system.
+  The symbol $0$ also refers to the zero element in the field $\Scalars$, this is ok because multiplying any vector by the zero element of $\Scalars$ yields the zero vector.}
 
-\item For every vector $\ket{v}$ there is an additive inverse of $\ket{v}$ denoted $\ket{-v}$ that satisfies the equation $\ket{v} + \ket{-v} = 0$.
+  \item For every vector $\ket{v}$ there is an additive inverse of $\ket{v}$ denoted $\ket{-v}$ that satisfies the equation $\ket{v} + \ket{-v} = 0$.
 
-\item All the usual associativity and distributativity rules hold.
-For example,
-\begin{equation*}
-(a+b)(\ket{v} + \ket{w}) = a\ket{v} + a\ket{w} + b\ket{v} + b\ket{w} \qquad \heartsuit
-\end{equation*}
+  \item All the usual associativity and distributativity rules hold.
+  For example,
+  \begin{equation*}
+    (a+b)(\ket{v} + \ket{w}) = a\ket{v} + a\ket{w} + b\ket{v} + b\ket{w}
+  \end{equation*}
 \end{enumerate}
 \end{definition}
 
-The usual way to refer to a vector space $\VS$ consisting of vectors $\{\ket{v}\}$ with scalars \textit{\textbf{S}} is to say that $\VS$ is the \textbf{vector space of} $\ket{v}$ \textbf{over} \textit{\textbf{S}}.
-A vector space over the real numbers is called a \textbf{real vector space}, while a vector space over the complex numbers is called a \textbf{complex vector space}.
+%The usual way to refer to a vector space $\VS$ consisting of vectors $\{\ket{v}\}$ with scalars $\Scalars$ is to say that ``$\VS$ is the vector space of $\ket{v}$ over $\Scalars$.''
+%A vector space over the real numbers is called a \textbf{real vector space}, while a vector space over the complex numbers is called a \textbf{complex vector space}.
 
 The symbol $\ket{\phantom{v}}$, called a \textbf{ket}, indicates a vector.
-The symbol inside the ket, whether it be the letter $v$, the name ``John'', or any other symbol, is just a name for the vector.
-By convention, the vector $\ket{v} + \ket{w}$ is denoted $\ket{v+w}$.
-Keep in mind that the symbol ``$v+w$'' inside the ket is just a label, but as in this case, the label conveys useful information about the vector's value.
+The symbol inside the ket, whether it be the letter $v$, the name ``Victor'', or any other symbol, is just a name for the vector.
+By convention, the vector $\ket{v} + \ket{w}$ can be denoted $\ket{v+w}$.
+The name of the vector is often chosen to convey useful information about the vector itself, but keep in mind that the thing in the ket is ultimately just a label.
 
 Two other notations for vectors in common use are $\vec{v}$ and $\mathbf{v}$.
-We use the ket notation because it's unambiguous and very common in physics.
+We use the ket notation because it's unambiguous common in physics literature, and lends itself to a useful expression for inner products as we will see below.
 
 \levelstay{Examples of vector spaces}
+
 \begin{enumerate}
-\item The set of all real valued functions defined on the interval $[0, 1]$ over the field of the real numbers.
-This is a vector space because \emph{1}. If $f$ and $g$ are functions defined on $[0, 1]$ then the function $h = f + g$ is also a function defined on $[0, 1]$, \emph{2}. Multiplication by scalars also produces functions on $[0, 1]$, \emph{3}. The zero vector is the function defined by $f(x)=0$, \emph{4}. The inverse of $f$ is the function $g$ defined by the equation $g(x) = -f(x)$, and \emph{5}. Associativity and distributativity work as expected.
-\item The set of complex numbers $\ket{z}$, over the field of real numbers.
-Given two complex numbers $\ket{z}$ and $\ket{u}$, then $\ket{z+u} \equiv \ket{z} + \ket{u}$ is also a complex number.
-The rest of the vector space properties also work, as you should check.
-\item The set of all polynomials of degree seven, over the real numbers.
-\item The set of ordered n-tuples of real numbers ($x_1$, $x_2$,\ldots , $x_n$), over the real numbers.
-In this case we define addition by the equation
-\begin{equation*}
-(x_1, x_2, \ldots, x_n) + (y_1, y_2, \ldots, y_n) = (x_1 + y_1, x_2 + y_2, \ldots, x_n + y_n) \, .
-\end{equation*}
-This space is called $\mathbb{R}^n$.
+  \item[\textit{1}.] The set of all real valued functions defined on the interval $[0, 1]$ over the field of the real numbers.
+    This is a vector space because:
+    \begin{enumerate}
+      \item[1.] Given two functions $f: [0, 1] \to \reals$ and $g: [0, 1] \to \reals$, their sum $h = f + g$ defined by the equation $h(x) = f(x) + g(x)$ is also a function $[0, 1] \to \reals$.
+      \item[2.] Multiplying a function $f: [0, 1] \to \reals$ by a scalar $c$ produces a new function $g: [0, 1] \to \reals$ defined by the equation $g(x) = c f(x)$.
+      \item[3.] The zero vector is the function $z:[0, 1] \to \reals$ defined by $z(x) = 0$. This is seen because if we define the sum $h = f + z$, then $h(x) = f(x) + z(x) = f(x)$, so $h = f$.
+      \item[4.] For any function $f:[0, 1] \to \reals$, its inverse is the function $g:[0, 1] \to \reals$ defined by the equation $g(x) = -f(x)$. This is seen because $(f + g)(x) = f(x) + g(x) = 0$, so $f + g = z$.
+      \item[5.] Associativity and distributativity work as expected.
+    \end{enumerate}
+  \item[\textit{2}.] The set of complex numbers $\ket{z}$, over the field of real numbers.
+    Given two complex numbers $\ket{z}$ and $\ket{u}$, then $\ket{z+u} \equiv \ket{z} + \ket{u}$ is also a complex number.
+    Given a complex number $\ket{z}$ and a real number $r$, the product $r\ket{z}$ is a complex number.
+    The rest of the vector space properties also work, as you should check.
+  \item[\textit{3}.] The set of all polynomials of degree seven, over the real numbers.
+  \item[\textit{4}.] The set of ordered n-tuples of real numbers ($x_1$, $x_2$,\ldots , $x_n$), over the real numbers.
+    In this case we define addition by the equation
+    \begin{equation*}
+      (x_1, x_2, \ldots, x_n) + (y_1, y_2, \ldots, y_n) = (x_1 + y_1, x_2 + y_2, \ldots, x_n + y_n) \, .
+    \end{equation*}
+    This space is called $\reals^n$.
 \end{enumerate}
-The vector space in example 4 is particularly interesting and important because it can be used to represent \emph{any} finite dimensional real vector space imaginable (we'll talk about this in depth in the next section).
-For example, the vector space of example 2, the complex numbers over the reals, can be \emph{represented} by the set of 2-tuples where the first entry represents the real part and the second entry represents the imaginary part.
+The vector space in example 4 is particularly interesting and important because it can be used to represent any finite dimensional real vector space.
+For example, the vector space of example 2, the complex numbers over the reals, can be represented by the set of 2-tuples where the first entry represents the real part and the second entry represents the imaginary part.
 In this representation a complex number $z$ is written
 \begin{equation*}
-z = x + iy \sim (x,y)
+  z = x + iy \sim (x,y)
 \end{equation*}
 where the symbol $\sim$ means ``is represented by''.
 Obviously the way to add two vectors in this representation is by adding the components, because two complex numbers are added by adding their real and imaginary parts.
 
+The same is true for the set of all polynomials of degree seven, over the real numbers.
+Given two such polynomials
+\begin{equation*}
+  p = p_7 \, x^7 + p_6 \, x^6 + \cdots + p_0 \qquad
+  q = q_7 \, x^7 + q_6 \, x^6 + \cdots + q_0
+\end{equation*}
+their sum is
+\begin{equation*}
+  p + q = (p_7 + q_7) x^7 + (p_6 + q_6)x^6 + \cdots + (p_0 + q_0)
+  \, .
+\end{equation*}
+We just added the coefficients of each degree of the polynomials, just as if we were adding the components in tuples of real numbers.
+Therefore, we can represent the vector space of ``polynomials of degree seven over the real numbers'' by the vector space of ``8-tuples of real numbers, over the real numbers''.
+
 \begin{flushleft} $\clubsuit$ \end{flushleft}
-Importantly, the tuple space $\mathbb{R}^n$ can be used to represent configurations or \textit{states} of physical systems.
+The tuple space $\reals^n$ can be used to represent configurations or ``states'' of physical systems.
 The configuration of our box and spring system is given by two numbers: the displacements $x_1$ and $x_2$ of the masses from their equilibrium positions.
 Knowledge of these two numbers for all times is the solution of the problem we want to find.
 In other words, we say that we've solved the problem if we find the functions
 \begin{equation*}
-x_{1}(t) \qquad \textrm{and} \qquad x_{2}(t) \, .
+  x_1(t) \qquad \textrm{and} \qquad x_2(t) \, .
 \end{equation*}
-We denote the configuration of the system at time $t$ by the symbol
-\begin{displaymath}
-\ket{\Psi (t)} \, .
-\end{displaymath}
-Since our system is characterised by the positions of two masses the configuration $\ket{\Psi (t)}$ can be represented by a 2-tuple,
-\begin{equation} \label{eq:Psirep}
-\ket{\Psi (t)} \sim (x_{1}(t),x_2(t))
-\end{equation}
-where again $\sim$ means ``is represented by''.
-This is no big revelation; we already knew that the spring and box system could be represented by $x_t(t)$ and $x_2(t)$.
-However, since we showed that tuples of numbers represent vector spaces, we now see that the configuration of our spring-and-box system is actually a vector, and that observation will soon give us a beautiful way to solve for the system's motion.
+We see that the state of the system at time $t$ is a vector space if we collect $x_1(t)$ and $x_2(t)$ into a 2-tuple $(x_1(t), x_2(t))$.
+Since we showed that tuples of numbers represent vector spaces (remember the examples of the complex numbers and the polynomials of degree seven), we now see that the set of configurations of our spring-and-box system is actually a vector space, and that observation will soon give us a beautiful way to solve for the system's motion.
 \begin{flushright} $\clubsuit$ \end{flushright}
 
 \levelstay{Bases and Dimension}
@@ -111,7 +127,7 @@ where the numbers $v_i^e$ are scalars.
 The set of scalars $v_i^e$ are called the \textbf{coefficients} or \textbf{components} of $\ket{v}$ in the $e$ basis.
 The linear combination is called the ``decomposition of $\ket{v}$ in basis $e$''.
 \item
-The linear combination in 2 is unique. \qquad $\heartsuit$
+The linear combination in 2 is unique.
 \end{enumerate}
 \end{definition}
 Note that in the definition above, the letter $e$ refers to the \textit{set} of vectors $\{\ket{e_i}\} \equiv \{ \ket{e_1} \ldots \ket{e_n} \}$ while the symbol $\ket{e_i}$ refers to \emph{one} particular basis vector.
@@ -121,7 +137,7 @@ In this document, we use either a letter with no subscript, such as $e$, or the 
 Of course, not all bases will be named $e$, we could name a basis $f$, $G$, \textit{Victor}, or anything we want.
 
 \begin{definition}[Dimension]
-Given a vector space \VS with basis $e$ the dimension of \VS is the number of elements in the set $e$. \qquad $\heartsuit$
+  Given a vector space \VS\, with basis $e$, the dimension of \VS\, is the number of elements in the set $e$.
 \end{definition}
 This definition of dimension might seem to depend on the choice of basis, but you can prove that for a given vector space every basis has the same number of elements.
 

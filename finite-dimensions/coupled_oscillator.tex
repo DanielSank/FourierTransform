@@ -1,41 +1,47 @@
-\levelstay{The Coupled Oscillator}
-Consider the system shown in Figure \ref{Fig:CoupledMasses} consisting of two boxes of equal mass $m$ connected by three springs of equal spring constant $k$.
-Suppose we want to know, given initial positions and velocities of the boxes at time $t_{0}$, what are their positions and velocities at another time $t$?
-To answer this question,  we just have to solve Newton's equation of motion for each box, but this is not so easy!
-The equations of motion for box \#1 is
-\begin{align*}
-F &= m \ddot{x} \\
-F_\text{spring 1} + F_\text{spring 2} &= m \ddot{x} \\
--k x_1 + k (x_2 - x_1) &= m \ddot{x} \\
-\ddot{x}_1 &= \omega_0^2 (-2 x_1 + x_2) \, , \\
-\end{align*}
-where $\omega_0^2 \equiv k/m$.\footnote{We use the symbol $\omega_0$ here because, as we'll see later, $\sqrt{k/m}$ is the oscillation frequency of each box if they were uncoupled.}
-Similarly, the equation of motion for box \#2 is
-\begin{equation*}
-\ddot{x}_2 = \omega_0^2 (-2 x_2 + x_1) \, ,
-\end{equation*}
-giving us the system of equations
-\begin{equation} \label{eq:Newton}
-\ddot{x}_{1} = \omega_{0}^{2} (-2x_{1} + x_{2}) \qquad
-\ddot{x}_{2} = \omega_{0}^{2} (-2x_{2} + x_{1}) \, .
-\end{equation}
-This is a set of two second order differential equations which are \textit{coupled}, meaning that each equation has dependance on both $x_1$ and $x_2$.
-If you haven't taken a course in linear algebra or differential equations, it looks very difficult to solve.
-Give it a shot: try to solve for $x_{1}(t)$ and $x_{2}(t)$.
+\levelstay{Coupled oscillators}
 
 \quickfig
-{\columnwidth}
+{0.8\columnwidth}
 {boxes.pdf}
 {Coupled mass system.
 Each spring has spring constant $k$ and each box has mass $m$.
 The walls are fixed in place.}
-{Fig:CoupledMasses}
+{fig:CoupledMasses}
+
+Consider the system shown in Figure \ref{fig:CoupledMasses} consisting of two boxes of equal mass $m$ connected by three springs of equal spring constant $k$.
+Suppose we want to know, given initial positions and velocities of the boxes at time $t_{0}$, what are their positions and velocities at another time $t$?
+To answer this question,  we just have to solve Newton's equation of motion for each box, but doing that is not so easy.
+The equation of motion for box 1 is
+\begin{align*}
+  F &= m \ddot x_1 \\
+  F_\text{spring 1} + F_\text{spring 2} &= m \ddot x_1 \\
+  -k x_1 + k (x_2 - x_1) &= m \ddot x_1 \\
+  \ddot{x}_1 &= \omega_0^2 (-2 x_1 + x_2) \, , \\
+\end{align*}
+where $\omega_0^2 \equiv k/m$.\footnote{We use the symbol $\omega_0$ here because, as we'll see later, $\sqrt{k/m}$ is the oscillation frequency of each box if they were uncoupled.}
+Similarly, the equation of motion for box 2 is
+\begin{equation*}
+  \ddot{x}_2 = \omega_0^2 (-2 x_2 + x_1) \, ,
+\end{equation*}
+giving us the system of equations
+\begin{equation} \label{eq:Newton}
+  \ddot{x}_{1} = \omega_0^2 (-2x_1 + x_2)
+  \qquad
+  \ddot{x}_{2} = \omega_0^2 (-2x_2 + x_1)
+  \, .
+\end{equation}
+This is a set of two second order differential equations which are \textit{coupled}, meaning that each equation has dependance on both $x_1$ and $x_2$.
+If you haven't taken a course in linear algebra or differential equations, it looks very difficult to solve.
+Give it a shot: try to solve for $x_1(t)$ and $x_2(t)$.
 
 We will use this system of masses and springs as a centerpiece for this chapter.
-As we learn new mathematical techniques and ideas, we'll come back to this physical system as place to apply what we learn.
+As we learn new mathematical ideas and techniques, we'll apply them to this problem
 In the end, we'll find an amazingly simple way to solve for the motions of the boxes, using linear algebra.
 
 \leveldown{Exercises}
 
-\begin{itemize}\item[1)] Verify that (\ref{eq:Newton}) correctly describes the motion of the two coupled masses.\item[2)] Try to solve for $x_{1}(t)$ and $x_{2}(t)$.\end{itemize}
+\begin{itemize}
+  \item[1.] Verify that (\ref{eq:Newton}) correctly describes the motion of the two coupled masses.
+  \item[2.] Try to solve for $x_{1}(t)$ and $x_{2}(t)$.
+\end{itemize}
 
