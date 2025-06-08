@@ -47,38 +47,53 @@ We use the ket notation because it's unambiguous common in physics literature, a
 
 \levelstay{Examples of vector spaces}
 
+\textbf{1. The set of all real valued functions defined on the interval $[0, 1]$ over the field of the real numbers,} i.e. the functions $[0, 1] \to \reals$.
+Let's explicitly check that this set satisfies the definition of a vector space.
 \begin{enumerate}
-  \item[\textit{1}.] The set of all real valued functions defined on the interval $[0, 1]$ over the field of the real numbers.
-    This is a vector space because:
-    \begin{enumerate}
-      \item[1.] Given two functions $f: [0, 1] \to \reals$ and $g: [0, 1] \to \reals$, their sum $h = f + g$ defined by the equation $h(x) = f(x) + g(x)$ is also a function $[0, 1] \to \reals$.
-      \item[2.] Multiplying a function $f: [0, 1] \to \reals$ by a scalar $c$ produces a new function $g: [0, 1] \to \reals$ defined by the equation $g(x) = c f(x)$.
-      \item[3.] The zero vector is the function $z:[0, 1] \to \reals$ defined by $z(x) = 0$. This is seen because if we define the sum $h = f + z$, then $h(x) = f(x) + z(x) = f(x)$, so $h = f$.
-      \item[4.] For any function $f:[0, 1] \to \reals$, its inverse is the function $g:[0, 1] \to \reals$ defined by the equation $g(x) = -f(x)$. This is seen because $(f + g)(x) = f(x) + g(x) = 0$, so $f + g = z$.
-      \item[5.] Associativity and distributativity work as expected.
-    \end{enumerate}
-  \item[\textit{2}.] The set of complex numbers $\ket{z}$, over the field of real numbers.
-    Given two complex numbers $\ket{z}$ and $\ket{u}$, then $\ket{z+u} \equiv \ket{z} + \ket{u}$ is also a complex number.
-    Given a complex number $\ket{z}$ and a real number $r$, the product $r\ket{z}$ is a complex number.
-    The rest of the vector space properties also work, as you should check.
-  \item[\textit{3}.] The set of all polynomials of degree seven, over the real numbers.
-  \item[\textit{4}.] The set of ordered n-tuples of real numbers ($x_1$, $x_2$,\ldots , $x_n$), over the real numbers.
-    In this case we define addition by the equation
-    \begin{equation*}
-      (x_1, x_2, \ldots, x_n) + (y_1, y_2, \ldots, y_n) = (x_1 + y_1, x_2 + y_2, \ldots, x_n + y_n) \, .
-    \end{equation*}
-    This space is called $\reals^n$.
+  \item[\textit{1}.] Given two functions $f: [0, 1] \to \reals$ and $g: [0, 1] \to \reals$, their sum $h = f + g$ defined by the equation $h(x) = f(x) + g(x)$ is also a function $[0, 1] \to \reals$.
+  \item[\textit{2}.] Multiplying a function $f: [0, 1] \to \reals$ by a scalar $c$ produces a new function $g: [0, 1] \to \reals$ defined by the equation $g(x) = c f(x)$.
+  \item[\textit{3}.] The zero vector is the function $z:[0, 1] \to \reals$ defined by $z(x) = 0$. This is seen because if we define the sum $h = f + z$, then $h(x) = f(x) + z(x) = f(x)$, so $h = f$.
+  \item[\textit{4}.] For any function $f:[0, 1] \to \reals$, its inverse is the function $g:[0, 1] \to \reals$ defined by the equation $g(x) = -f(x)$. This is seen because $(f + g)(x) = f(x) + g(x) = 0$, so $f + g = z$.
+  \item[\textit{5}.] Associativity when summing functions and distributativity of multiplying them by scalars works as expected: $f + (g + h) = (f + g) + h$, and $a(f + g) = af + ag$.
 \end{enumerate}
+
+\noindent \textbf{2. The set of complex numbers $\ket{z}$, over the field of real numbers.}
+In the previous example, we wrote functions without the vector symbol to keep notation familiar, but here we introduce it.
+Checking the vector space properties is easy.
+Given two complex numbers $\ket{z}$ and $\ket{u}$, their sum $\ket{z} + \ket{u}$ is also a complex number.
+Given a complex number $\ket{z}$ and a real number $r$, the product $r\ket{z}$ is a complex number.
+The rest of the vector space properties also work, as you should check.\newline
+
+\noindent \textbf{3. The set of all polynomials of degree seven, over the real numbers.}
+We check the summation property:
+\begin{equation*}
+  \begin{split}
+    p =& p_7\,x^7 + \cdots + p_0 \\
+   +q =& q_7\,x^7 + \cdots + q_0 \\
+    \hline
+      =& (p_7 + q_7) \, x^7 + \cdots + (p_0 + q_0)
+  \end{split}
+\end{equation*}
+The rest of the properties are straightforward to check.\newline
+
+\noindent \textbf{4. The set of ordered n-tuples of real numbers ($x_1$, $x_2$,\ldots , $x_n$), over the real numbers.}
+In this case we define addition by the equation
+\begin{equation*}
+  (x_1, x_2, \ldots, x_n) + (y_1, y_2, \ldots, y_n) = (x_1 + y_1, x_2 + y_2, \ldots, x_n + y_n) \, .
+\end{equation*}
+This space is called $\reals^n$.
+
+\levelstay{Isomorphism to $\reals^n$}
 The vector space in example 4 is particularly interesting and important because it can be used to represent any finite dimensional real vector space.
 For example, the vector space of example 2, the complex numbers over the reals, can be represented by the set of 2-tuples where the first entry represents the real part and the second entry represents the imaginary part.
-In this representation a complex number $z$ is written
+In this representation a complex number $z$ is represented as a tuple
 \begin{equation*}
   z = x + iy \sim (x,y)
 \end{equation*}
 where the symbol $\sim$ means ``is represented by''.
 Obviously the way to add two vectors in this representation is by adding the components, because two complex numbers are added by adding their real and imaginary parts.
 
-The same is true for the set of all polynomials of degree seven, over the real numbers.
+The same is true for example 3, the set of all polynomials of degree seven over the real numbers.
 Given two such polynomials
 \begin{equation*}
   p = p_7 \, x^7 + p_6 \, x^6 + \cdots + p_0 \qquad
@@ -89,8 +104,27 @@ their sum is
   p + q = (p_7 + q_7) x^7 + (p_6 + q_6)x^6 + \cdots + (p_0 + q_0)
   \, .
 \end{equation*}
-We just added the coefficients of each degree of the polynomials, just as if we were adding the components in tuples of real numbers.
+We add the coefficients of each degree of the polynomials, just as if we were adding the components in tuples of real numbers.
 Therefore, we can represent the vector space of ``polynomials of degree seven over the real numbers'' by the vector space of ``8-tuples of real numbers, over the real numbers''.
+In that representation, we would have written the sum like this
+\begin{equation*}
+  \ket{p + q}
+  \sim (p_7, p_6, \ldots, p_0) + (q_7, q_6, \ldots, q_0) = (p_7 + q_7, p_6 + q_6, \ldots, p_0 + q_0)
+  \, .
+\end{equation*}
+
+In formal mathematical language, any finite dimensional vector space over the real numbers is \textbf{isomorphic} to $\reals^n$.
+Two things being isomorphic means that you can map between those two things, and that this mapping preserves structure.
+For example, if we represent two polynomials of degree seven $p$ and $q$ by two 7-tuples of real numbers, then the sum of those tuples should be the representation of $p + q$.
+Ironically, it's obvious that this condition holds because we use that isomorphism all the time when we compute sums of polynomials.
+That is, we sum the coefficients of the polynomial, order by order, just as we would sum the entries in a tuple slot by slot.
+
+This isomorphism between any finite dimensional vector space over the real numbers and the specific vector space $\reals^n$ is profoundly important for two reasons.
+First, the correspondence gives us a trivial way to compute the sum of two vectors, i.e. by summing the elements in the $n$-tuples representing each vector.
+Second, and more importantly, remember the example of the arrow on a page in the introduction.
+There we saw that the arrow may be represented by more than one element of $\reals^2$.
+Now that we know that any finite dimentional vector space over the reals can be represented by $\reals^n$, we may ask whether a vector can be represented by different elements in $\reals^n$ depending on the choice of coordinates, just like the arrow.
+Indeed, this thought is what will lead us to solve the coupled oscillators problem in this chapter, and to discover the Fourier transform in the next chapter.
 
 \begin{flushleft} $\clubsuit$ \end{flushleft}
 The tuple space $\reals^n$ can be used to represent configurations or ``states'' of physical systems.
@@ -101,36 +135,38 @@ In other words, we say that we've solved the problem if we find the functions
   x_1(t) \qquad \textrm{and} \qquad x_2(t) \, .
 \end{equation*}
 We see that the state of the system at time $t$ is a vector space if we collect $x_1(t)$ and $x_2(t)$ into a 2-tuple $(x_1(t), x_2(t))$.
-Since we showed that tuples of numbers represent vector spaces (remember the examples of the complex numbers and the polynomials of degree seven), we now see that the set of configurations of our spring-and-box system is actually a vector space, and that observation will soon give us a beautiful way to solve for the system's motion.
+Since we showed that tuples of numbers represent vector spaces, we now see that the set of configurations of our spring-and-box system is actually a vector space, and that observation will soon give us a beautiful way to solve for the system's motion.
 \begin{flushright} $\clubsuit$ \end{flushright}
 
 \levelstay{Bases and Dimension}
 
-Here we define the notions of vector spaces basis and dimension.
+Vector space dimension was mentioned in the previous section.
+Here we define basis and dimension.
 
 \begin{definition}[Basis]
 Consider a finite dimensional vector space \VS.
 A basis for \VS, denoted by the symbol $e$, is a set of vectors
 \begin{displaymath}
-e \equiv \{\ket{e_1}, \ket{e_2}, \ldots, \ket{e_n}\}
+  e \equiv \{\ket{e_1}, \ket{e_2}, \ldots, \ket{e_n}\}
 \end{displaymath}
 with the following three properties:
 \begin{enumerate}
-\item
-For each $i$, $\ket{e_i}$ is a member of \VS.
-\item
-Any vector $\ket{v}$ in \textbf{V} can be represented as a linear combination,
-\begin{displaymath}
-\ket{v} = v^e_1 \ket{e_1} + v^e_2 \ket{e_2} + \cdots + v^e_n \ket{e_n} = \sum_{i=1}^n v^e_i \ket{e_i}
-\end{displaymath}
-where the numbers $v_i^e$ are scalars.
-The set of scalars $v_i^e$ are called the \textbf{coefficients} or \textbf{components} of $\ket{v}$ in the $e$ basis.
-The linear combination is called the ``decomposition of $\ket{v}$ in basis $e$''.
-\item
-The linear combination in 2 is unique.
+  \item
+    For each $i$, $\ket{e_i}$ is a member of \VS.
+  \item
+    Any vector $\ket{v}$ in \textbf{V} can be represented as a linear combination,
+    \begin{displaymath}
+      \ket{v}
+      = v^e_1 \ket{e_1} + v^e_2 \ket{e_2} + \cdots + v^e_n \ket{e_n} = \sum_{i=1}^n v^e_i \ket{e_i}
+    \end{displaymath}
+    where the numbers $v_i^e$ are scalars.
+    The set of scalars $v_i^e$ are called the \textbf{coefficients} or \textbf{components} of $\ket{v}$ in the $e$ basis.
+    The linear combination is called the ``decomposition of $\ket{v}$ in basis $e$''.
+  \item
+    The linear combination in 2 is unique.
 \end{enumerate}
 \end{definition}
-Note that in the definition above, the letter $e$ refers to the \textit{set} of vectors $\{\ket{e_i}\} \equiv \{ \ket{e_1} \ldots \ket{e_n} \}$ while the symbol $\ket{e_i}$ refers to \emph{one} particular basis vector.
+In the definition above, the letter $e$ refers to the \textit{set} of vectors $\{\ket{e_i}\} \equiv \{ \ket{e_1} \ldots \ket{e_n} \}$ while the symbol $\ket{e_i}$ refers to \emph{one} particular basis vector.
 Some books use $\ket{e_i}$ (or perhaps $\mathbf{e}_i$ or $\vec{e}_i$) to refer to the basis itself.
 This is abuse of notation because it confuses a single element with a whole set.
 In this document, we use either a letter with no subscript, such as $e$, or the set notation $\{\ket{e_i}\}$, to refer to a basis.
@@ -143,25 +179,25 @@ This definition of dimension might seem to depend on the choice of basis, but yo
 
 \leveldown{Examples of bases and dimension}
 
-\begin{enumerate}
-\item The vectors $\ket{e_1} = \ket{1} = 1$ and $\ket{e_2} = \ket{i} = i$ form a basis for the vector space of complex numbers over the real numbers.
+\textbf{1.} The vectors $\ket{e_1} = \ket{1} = 1$ and $\ket{e_2} = \ket{i} = i$ form a basis for the vector space of complex numbers over the real numbers.
 \emph{1}. $1$ and $i$ are both complex numbers, \emph{2}. Any complex number $z$ can be decomposed as
 \begin{displaymath}
-z = \Re(z) \ket{1} + \Im(z) \ket{i}
+  z = \Re(z) \ket{1} + \Im(z) \ket{i}
 \end{displaymath}
 where $\Im(z)$ and $\Re(z)$ are both real numbers, \emph{3}. The decomposition is obviously unique.
-As there are two basis vectors, the space of complex numbers over the real numbers is two dimensional.\footnote{In this example the vector space is two dimensional because we're using the reals as the field.
-If we take the complex numbers over the complex numbers, then a basis could be formed by just $\ket{1}$, because any complex number $z$ could be decomposed as $z = z\,\ket{1}$, and in this case, the space is one dimensional.}
-\item The polynomials $\{1, x,x^{2}\}$ form a basis for the space of polynomials of degree two: by definition any polynomial of degree two has the form $a_0 + a_1 x + a_2 x^2$ where the coefficients $a_i$ are uniquely determined by the polynomial in question.
-The dimension is 3.
-\item For the vector space $\mathbb{R}^n$ we have the obvious basis
-\begin{displaymath}
-(1,0,\ldots ,0), (0,1,\ldots ,0), \ldots , (0,0,\ldots ,1)
-\end{displaymath}
-The dimension of $\mathbb{R}^n$ is $n$.
-\end{enumerate}
+As there are two basis vectors, the space of complex numbers over the real numbers has dimension two.\footnote{In this example the vector space has dimension two because we're using the reals as the field.
+If we take the complex numbers over the complex numbers, then a basis could be formed by just $\ket{1}$, because any complex number $z$ could be decomposed as $z = z\,\ket{1}$, and in this case, the space has dimension one.}\newline
 
-Now let's apply this idea of bases to our physical problem.
+\noindent \textbf{2.} The polynomials $\{1, x,x^{2}\}$ form a basis for the space of polynomials of degree two: by definition any polynomial of degree two has the form $a_0 + a_1 x + a_2 x^2$ where the coefficients $a_i$ are uniquely determined by the polynomial in question.
+The dimension is 3.\newline
+
+\noindent \textbf{3.} For the vector space $\mathbb{R}^n$ we have the obvious basis
+\begin{displaymath}
+  (1,0,\ldots ,0), (0,1,\ldots ,0), \ldots , (0,0,\ldots ,1)
+\end{displaymath}
+The dimension of $\mathbb{R}^n$ is $n$.\newline
+
+\noindent Now let's apply this idea of bases to our physical problem.
 \begin{flushleft} $\clubsuit$ \end{flushleft}
 We already pointed out that the numbers $x_1(t)$ and $x_2(t)$ can be put into a tuple and considered an element in $\mathbb{R}^2$
 So, the configuration space of the box-and-spring system is a vector space, but how is this \emph{useful}?
@@ -181,9 +217,9 @@ The fact that the differential equations in (\ref{eq:Newton}) are coupled manife
 This suggests that \emph{if we could find a different basis in which the matrix were diagonal, then the differential equations would decouple and the problem would be easily solved}.
 Setting up the mathematical tools to understand how to find such a basis is the object of the next section.
 
-There is one more very important remark to be made before we move on.
+There is one more important remark to be made before we move on.
 It might not make any sense at this point, but read it anyway before going on to the next section.
-If it doesn't make sense now don't worry, it will very soon.
+If it doesn't make sense now don't worry, it will soon.
 Equation (\ref{eq:equationOfMotionMatrix}) is a matrix equation written down in a particular basis $X$.
 We could rewrite the equation in a more abstract form without reference to any basis.
 Let $\ket{\ddot{\Psi}(t)}$ be a vector representing the acceleration of the system at time $t$.
@@ -191,7 +227,7 @@ Then we can write
 \begin{equation}\label{eq:equationOfMotionAbstract}
 \ket{\ddot{\Psi}(t)} = P \ket{\Psi (t)}
 \end{equation}
-where $P$ is a linear transformation whose representation in basis $X$ is given by the matrix shown in equation (\ref{eq:equationOfMotionMatrix}).
+where $P$ is a linear transformation whose \emph{representation} in basis $X$ is given by the matrix shown in equation (\ref{eq:equationOfMotionMatrix}).
 It is crucial that you understand that $P$ is not the matrix in equation (\ref{eq:equationOfMotionMatrix}).
 It is some linear transformation on the vector space of configurations of the physical system.
 It is \emph{represented} by the matrix in equation (\ref{eq:equationOfMotionMatrix}) in the basis $X$.
