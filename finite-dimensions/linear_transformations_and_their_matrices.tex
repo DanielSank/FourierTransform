@@ -1,161 +1,278 @@
-\levelstay{Linear Transformations and their Matrices}
-In this section we formally introduce linear transformations and matrices.  We will pay special attention to the fact that while linear transformations on vector spaces have meaning independant of bases, matrices do not.  The matrix that represents a given linear transformation depends on the basis in which it is expressed.  Our discussion will assume that the domain and range of our linear transformations are the same vector space.  This is done to prevent awkward sentences and is not really necessary; our results remain valid in the more general case in which the domain and range are not the same space.
+\levelstay{Linear Transformations and their matrices}
 
-%%%subsection Linear Transformations%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\leveldown{Linear Transformations}
-It turns out that linear transformations are everywhere in math and physics. Here's a formal definition:
+This section formally introduces linear transformations and matrices.
+We pay special attention to the fact that linear transformations on vector spaces have meaning independant of bases, but the matrices we use to represent those transformations depend on the choice of basis.
+Our discussion will assume that the domain and range of our linear transformations are the same vector space.
+This is done to prevent awkward sentences and is not really necessary; our results remain valid in the more general case in which the domain and range are not the same space.
 
-%%Definition of linear transformation
+\leveldown{Linear transformations}
+Linear transformations are everywhere in math and physics.
+Here's a formal definition:
+
 \begin{definition}[Linear transformation]
-Let $\ket{v}$ and $\ket{w}$ be vectors and a and b be scalars on some vector space \textbf{V}.  A linear transformation T:\textbf{V}$\rightarrow$\textbf{V} is a function, whose domain and range are \textbf{V}, that satisfies the linearity equation
-\begin{displaymath}
-T(a\ket{v} + b\ket{w}) = aT\ket{v} + bT\ket{w}.
-\end{displaymath}
-In keeping with our decision to lable the sum $\ket{v} + \ket{w}$ as $\ket{v+w}$ we will sometimes lable a transformed vector $T\ket{v}$ as $\ket{Tv}$. \qquad $\heartsuit$
+  Let $\ket{v}$ and $\ket{w}$ be vectors and a and b be scalars on some vector space $\VS$.
+  A linear transformation $T:\VS \rightarrow \VS$ is a function, whose domain and range are $\VS$, that satisfies the linearity equation
+  \begin{displaymath}
+    T(a\ket{v} + b\ket{w}) = aT\ket{v} + bT\ket{w} \,.
+  \end{displaymath}
+  In keeping with the convention wherein the sum $\ket{v} + \ket{w}$ can be written as $\ket{v+w}$ we will sometimes lable a transformed vector $T\ket{v}$ as $\ket{Tv}$.
 \end{definition}
 
 \begin{flushleft}\textbf{Example of a Linear Transformation:}\end{flushleft}
-You know of many linear transformations from physics.  Electrostatics provides a nice example.  For any distribution of electric charge $\rho$ there is an associated electric potential $\Phi$.  Both the set of all possible charge distributions and the set of all possible electric potentials are vector spaces; if you add two charge distributions together or multiply it by a number you get a new charge distribution, etc.  We can invent a transformation $T$ that takes a charge distribution and returns the associated electric potential.  We write
-\begin{displaymath}
-\ket{\Phi} = T\ket{\rho}
-\end{displaymath}
-It is easy to see that this transformation is linear: it is one of our most fundamental physical laws that the electric potential caused by the simultaneus existence of two different charge distributions is equal to the sum of the potentials that would be caused by each of the charge distributions if they existed independently.  Textbooks call this the ``principle of superposition''.  Let's say all of that again in symbols.  The explicit form of $T$ is given by Coulomb's law,
-\begin{displaymath} \Phi (\textbf{x}) = (T\rho )(\textbf{x}) = \frac{1}{4 \pi \epsilon _0} \int_{\textbf{x}'} \frac{\rho (\textbf{x}')}{|\textbf{x} - \textbf{x}'|} d^{3}\textbf{x}'\end{displaymath}
-To show that $T$ is linear we consider two charge distributions, $\rho_1$ and $\rho_2$ and calculate $T(\rho _1 + \rho_2)$ as follows,
-\begin{eqnarray*}
-\bigl( T(\rho _1 + \rho _2)\bigr) (\textbf{x}) &=& \frac{1}{4 \pi \epsilon _0} \int_{\textbf{x}'} \frac{\rho _1 (\textbf{x}') + \rho _2 (\textbf{x}')}{|\textbf{x} - \textbf{x}'|} d^{3}\textbf{x}'\\
-&=& \frac{1}{4 \pi \epsilon _0} \int_{\textbf{x}'} \frac{\rho _1 (\textbf{x}')}{|\textbf{x} - \textbf{x}'|} d^{3}\textbf{x}' + \frac{1}{4 \pi \epsilon _0} \int_{\textbf{x}'} \frac{\rho _2 (\textbf{x}')}{|\textbf{x} - \textbf{x}'|} d^{3}\textbf{x}'\\
-(T(\rho_1 + \rho_2))(\textbf{x}) &=& T\rho _1 (\textbf{x}) + T\rho _2 (\textbf{x}).
-\end{eqnarray*}
-This purpose of this example is to show you that linear transformations come in many guises.  In particular, many of the laws of physics involving derivatives and integrals may be understood from the mathematical point of view of linear transformations because both differentiation and integration are linear transformations: $\frac{d}{dx}(af + bg) = a(\frac{df}{dx}) + b(\frac{dg}{dx})$ and $\int(af + bg) = a\int{f} + b\int{g}$. The other fact that makes Coulomb's law linear is that the existence of two charge distributions $\rho_1$ and $\rho_2$ is equivalent to one distribution $\rho_1 + \rho_2$.
 
-%%%subsection Inner Products%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\levelstay{Inner Products}
+You know of many linear transformations from physics.
+Electrostatics provides a nice example.
+For any distribution of electric charge $\rho$ there is an associated electric potential $\Phi$.
+Both the set of all possible charge distributions and the set of all possible electric potentials are vector spaces; if you add two charge distributions together or multiply it by a number you get a new charge distribution, etc.
+We can invent a transformation $T$ that takes a charge distribution and returns the associated electric potential, writing
+\begin{displaymath}
+  \ket{\Phi} = T\ket{\rho}
+  \, .
+\end{displaymath}
+It is easy to see that this transformation is linear: it is one of our most fundamental physical laws that the electric potential caused by the simultaneus existence of two different charge distributions is equal to the sum of the potentials that would be caused by each of the charge distributions if they existed independently.
+Textbooks call this the ``principle of superposition''.
+Let's say all of that again in symbols.
+The explicit form of $T$ is given by Coulomb's law,
+\begin{displaymath}
+  \Phi (\textbf{x}) =
+  (T\rho )(\textbf{x}) = \frac{1}{4 \pi \epsilon _0} \int_{\textbf{x}'} \frac{\rho (\textbf{x}')}{|\textbf{x} - \textbf{x}'|} d^3 \textbf{x}'
+  \, .
+\end{displaymath}
+To show that $T$ is linear we consider two charge distributions, $\rho_1$ and $\rho_2$ and calculate $T(\rho _1 + \rho_2)$ as follows,
+\begin{align*}
+  \bigl( T(\rho _1 + \rho _2)\bigr) (\textbf{x})
+  =& \frac{1}{4 \pi \epsilon _0} \int_{\textbf{x}'} \frac{\rho _1 (\textbf{x}') + \rho _2 (\textbf{x}')}{|\textbf{x} - \textbf{x}'|} d^{3}\textbf{x}' \\
+  =& \frac{1}{4 \pi \epsilon _0} \int_{\textbf{x}'} \frac{\rho _1 (\textbf{x}')}{|\textbf{x} - \textbf{x}'|} d^{3}\textbf{x}' + \frac{1}{4 \pi \epsilon _0} \int_{\textbf{x}'} \frac{\rho _2 (\textbf{x}')}{|\textbf{x} - \textbf{x}'|} d^{3}\textbf{x}' \\
+  =& T\rho _1 (\textbf{x}) + T\rho _2 (\textbf{x})
+  \,.
+\end{align*}
+This purpose of this example is to show you that linear transformations come in many forms.
+In particular, many of the laws of physics involving derivatives and integrals may be understood from the mathematical point of view of linear transformations because both differentiation and integration are linear transformations: $\frac{d}{dx}(af + bg) = a(\frac{df}{dx}) + b(\frac{dg}{dx})$ and $\int(af + bg) = a\int{f} + b\int{g}$.
+The other fact that makes Coulomb's law linear is that the existence of two charge distributions $\rho_1$ and $\rho_2$ is equivalent to one distribution $\rho_1 + \rho_2$.
+
+\levelstay{Inner products}
 Before we continue our discussion of linear operators we have to introduce inner products.  We make a convention:
 
 \textit{For now we deal only with real vector spaces.  We will generalize to complex vector spaces at the end of this chapter}.\footnote{You may be asking yourself what other fields there are besides the real and complex numbers.  One example is the set of 2 by 2 matrices with nonvanishing determinant; they can be added together or multiplied and have additive and multiplicative inverses.}
-%%Definition of inner product
-\begin{definition}[Inner product]
-An \emph{\textbf{inner product}} on a (real) vector space \textbf{V} is an operation which takes two vectors $\ket{v}$ and $\ket{w}$ and returns a real number. The inner product of $\ket{v}$ and $\ket{w}$ is denoted $\braket{v}{w}$.  The following properties must be satisfied:\\
-\\
-1. $\braket{v}{w} = \braket{w}{v}$.\\
-2. $\braket{v}{v}$ is a real number greater than or equal to zero, and $\braket{v}{v} = 0$ if and only if $\ket{v}$ is the zero vector.\\
-3. The usual distribution laws hold, ie. $\braket{av}{w + u} = a\braket{v}{w} + a\braket{v}{u}. \qquad \heartsuit$
-\end{definition}
-The number $\braket{v}{v}$ is often denoted $\norm{v}^2$ and is called the \textbf{norm squared} of $\ket{v}$.
 
-In the case of vectors in \textbf{R}$^n$ the standard dot product $\textbf{v}\cdot \textbf{w}$ is an inner product.  We know how to calculate the inner product of two such vectors as long as we know their components in some orthonormal basis $\ket{e_i}$.\footnote{An orthonormal basis $\ket{e_i}$ is one in which $\braket{e_i}{e_j} = \delta _{ij}$.}  In that case $\braket{v}{w}$ is given by $v^{e}_1 w^{e}_1 + v^{e}_2 w^{e}_2 + \cdots + v^{e}_n w^{e}_n$ where the numbers $v^{e}_i$ and $w^{e}_i$ are the components of $\ket{v}$ and $\ket{w}$ in the basis $\ket{e_i}$.  It is usual to depict this operation with matrix multiplication (let $^\top$ denote the transpose):
+\begin{definition}[Inner product]
+  An \newword{inner product} on a (real) vector space $\VS$ is a function which takes two vectors $\ket{v}$ and $\ket{w}$ and returns a real number.
+  The inner product of $\ket{v}$ and $\ket{w}$ is denoted $\braket{v}{w}$.
+  The following properties must be satisfied:
+  \begin{enumerate}
+    \item[1.] $\braket{v}{w} = \braket{w}{v}$.
+    \item[2.] $\braket{v}{v}$ is a real number greater than or equal to zero, and $\braket{v}{v} = 0$ if and only if $\ket{v}$ is the zero vector.
+    \item[3.] The usual distribution laws hold, ie. $\braket{av}{w + u} = a\braket{v}{w} + a\braket{v}{u}$.
+  \end{enumerate}
+\end{definition}
+The number $\braket{v}{v}$ is often denoted $\norm{v}^2$ and is called the \newword{norm squared} of $\ket{v}$.
+
+In the case of vectors in $\reals^n$, the standard dot product $\textbf{v}\cdot \textbf{w}$ is an inner product.
+We know how to calculate the inner product of two such vectors as long as we know their components in some orthonormal basis $\ket{e_i}$.\footnote{An orthonormal basis $\ket{e_i}$ is one in which $\braket{e_i}{e_j} = \delta _{ij}$.}
+In that case $\braket{v}{w}$ is given by $v^{e}_1 w^{e}_1 + v^{e}_2 w^{e}_2 + \cdots + v^{e}_n w^{e}_n$ where the numbers $v^{e}_i$ and $w^{e}_i$ are the components of $\ket{v}$ and $\ket{w}$ in the basis $\ket{e_i}$.
+It is usual to depict this operation with matrix multiplication (let $^\top$ denote the transpose):
 \begin{displaymath}
-\braket{v}{w}
-= \textbf{v}^\top \textbf{w}
-= \left[ \begin{array}{cccc}
-v^{e}_{1} & v^{e}_{2} & \cdots & v^{e}_{n} \end{array} \right]
-\left[ \begin{array}{c}
-w^{e}_1 \\ w^{e}_2 \\ \vdots \\ w^{e}_n \end{array} \right] 
-= \sum_{i=1}^{n} v_i^ew_i^e.
+  \braket{v}{w}
+  = \textbf{v}^\top \textbf{w}
+  = \left[ \begin{array}{cccc}
+  v^{e}_{1} & v^{e}_{2} & \cdots & v^{e}_{n} \end{array} \right]
+  \left[ \begin{array}{c}
+  w^{e}_1 \\ w^{e}_2 \\ \vdots \\ w^{e}_n \end{array} \right] 
+  = \sum_{i=1}^{n} v_i^ew_i^e
+  \, .
 \end{displaymath}
-This equation shows why $\braket{v}{w}$ is a good notation.  We can think of $\bra{v}$ as being the `transpose' of the vector $\ket{v}$ so that $\braket{v}{w}$ looks just like matrix multiplication.  A symbol $\bra{\phantom{v}}$ is called a \textbf{bra}.  The terms \textbf{bra} and \textbf{ket} suggest the term \textbf{braket} for the symbol $\braket{v}{w}$.  That's why this is called the Dirac braket notation.
+This equation shows why $\braket{v}{w}$ is a good notation; we can think of $\bra{v}$ as being the `transpose' of the vector $\ket{v}$ so that $\braket{v}{w}$ looks just like matrix multiplication.
+A symbol $\bra{\phantom{v}}$ is called a \newword{bra}.
+The terms \newword{bra} and \newword{ket} suggest the term \newword{braket} for the symbol $\braket{v}{w}$.
+That's why this is called the Dirac braket notation.
 
 The inner product gives us a nice way to find components of vectors with respect to a given orthonormal basis.
-Recall that we denoted the component of $\ket{v}$ in the basis $\ket{e_i}$ by $v^{e}_{i}$.  Then $v^{e}_{i}$ is given by
+Recall that we denoted the component of $\ket{v}$ in the basis $\ket{e_i}$ by $v^e_i$.
+Then $v^e_i$ is given by
 \begin{equation} \label{eq:vectorcomp}
-\framebox{$v^{e}_i = \braket{e_i}{v}$}
+  \framebox{$v^{e}_i = \braket{e_i}{v}$}
 \end{equation}
-as you can readily check.  This equation is quite obvious so you might wonder why it deserves a box.  The reason is that when we move on to looking at the components of matrices in a given basis we will find a very similar equation, and we want to draw attention to the similarity.  We now make another convention:
+as you can readily check.
+This equation is quite obvious so you might wonder why it deserves a box.
+The reason is that when we move on to looking at the components of matrices in a given basis we will find a very similar equation, and we want to draw attention to the similarity.
+We now make another convention:
 
 \textit{In all subsequent discussion we use the term \emph{\textbf{basis}} to mean \emph{\textbf{orthonormal basis}} unless otherwise indicated}.
 
-\begin{flushleft}\textbf{Exercises}\end{flushleft}
+\levelstay{Exercises}
 \begin{itemize}
-\item[1)] Prove equation (\ref{eq:vectorcomp}).  This is a two or three line problem.
-\item[2)] Consider an inner product $\braket{~}{~}$.  Show that if we work in a basis $Q$ that is orthonormal with respect to this inner product, then the inner product is always given by $\sum_{i=1}^n v_i^Q w_i^Q$.  This shows that inner products are always just dot products as long as you work in a basis that is orthonormal with respect to the inner product in question.
+  \item[1)] Prove equation (\ref{eq:vectorcomp}).  This is a two or three line problem.
+  \item[2)] Consider an inner product $\braket{~}{~}$.  Show that if we work in a basis $Q$ that is orthonormal with respect to this inner product, then the inner product is always given by $\sum_{i=1}^n v_i^Q w_i^Q$.  This shows that inner products are always just dot products as long as you work in a basis that is orthonormal with respect to the inner product in question.
 \end{itemize}
 
-%%%subsection MATRIX ELEMENTS%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\levelstay{Matrix Elements}
-When we learn about linear transformations in linear algebra courses we are usually thinking in the context of matrices.  However, as we have just seen in the example of the mapping between charge distributions and electric potentials, a linear transformation can occur as an integral operation having no obvious relation to matrices.  In the finite dimensional case any linear transformation can be \emph{represented} by a matrix so long as a basis is specified.  The matrix representing a transformation will depend on the choice of basis.  Keep this in mind as we now investigate the relationship between linear transformations, bases, and matrices.
+\levelup{Matrix elements}
 
-The first step is to understand what matrix elements are.  What information do they contain?  To answer this question consider what happends when we multiply a matrix on the right by a basis vector,
-\begin{displaymath}\left[ \begin{array}{ccc} a&b&c\\d&e&f\\g&h&i \end{array} \right] \left[ \begin{array}{c} 0\\1\\0 \end{array} \right] = \left[ \begin{array}{c} b\\e\\h \end{array} \right]. \end{displaymath}
-Multiplying the matrix on the right by basis vector number 2 picked out the second column from the matrix.  It should be obvious that multiplication of a matrix on the right by basis vector $j$ pulls out the $j^{th}$ column of the matrix.  This give us the following rule: \emph{given a transformation $T$ and a basis $e$ the $j^{th}$ column of the matrix representing $T$ in this basis contains the components of $\ket{Te_j}$ in the basis}.  Do part $a$ of exercise 2 at the end of this section to make sure you understand this rule.
+When we learn about linear transformations in linear algebra courses we are usually thinking in the context of matrices.
+However, as we have just seen in the example of the mapping between charge distributions and electric potentials, a linear transformation can appear as an integral operation having no obvious relation to matrices
+In finite dimensional vector spaces, any linear transformation can be \emph{represented} by a matrix so long as a basis is specified.
+The matrix representing a transformation will depend on the choice of basis.
+Keep this in mind as we now investigate the relationship between linear transformations, bases, and matrices.
+
+The first step is to understand what matrix elements are.
+What information do they contain?
+To answer this question consider what happends when we multiply a matrix on the right by a basis vector,
+\begin{displaymath}
+  \left[ \begin{array}{ccc} a&b&c\\d&e&f\\g&h&i \end{array} \right] \left[ \begin{array}{c} 0\\1\\0 \end{array} \right] = \left[ \begin{array}{c} b\\e\\h \end{array} \right]
+  \,.
+\end{displaymath}
+Multiplying the matrix on the right by basis vector number 2 picked out the second column from the matrix
+You can check that multiplication of a matrix on the right by basis vector $j$ pulls out the $j^{th}$ column of the matrix.
+This give us the following rule: \emph{given a transformation $T$ and a basis $e$ the $j^{th}$ column of the matrix representing $T$ in this basis contains the components of $\ket{Te_j}$ in the basis}.
+Do part $a$ of exercise 2 at the end of this section to make sure you understand this rule.
 
 Now look at a slightly different calculation,
-\begin{displaymath}\left[ \begin{array}{ccc} 0&0&1 \end{array} \right] \left[ \begin{array}{ccc} a&b&c\\d&e&f\\g&h&i \end{array} \right] \left[ \begin{array}{c} 0\\1\\0 \end{array} \right] = h. \end{displaymath}
-Simultaneous multiplication on the left by the transpose of basis element 3 and on the right by basis element number 2 returned the matrix element from the third row and second column.  It should be obvious that multiplication on the left by the transpose of basis element $i$ picks out the $i^{th}$ row of the matrix while multiplication on the right by basis element $j$ picks out the $j^{th}$ column so that performing both of these operations at once returns the $ij^{th}$ matrix element.  Given a linear transformation $T$ and a basis $e$ we denote the $ij^{th}$ \textbf{matrix element} of $T$ in this basis by $T^e_{ij}$.  It is given by the equation
-\begin{equation}\label{eq:matrixelement} \framebox{$T^e_{ij} = \braket{e_i}{Te_j}$}\end{equation}
-Note the similarity with equation (\ref{eq:vectorcomp}).  Equation (\ref{eq:matrixelement}) makes it clear that matrix elements are basis dependent.  Equation (\ref{eq:matrixelement}) is often written (especially by physicists) as $T^e_{ij} = \braket{e_i}{T|e_j}$ with the extra vertical line.  The meaning is exactly the same, and we will use both notations in this document.  We write the extra line sometimes to show explicity what is a vector and what is a transformation.  In either case the English translation of equation (\ref{eq:matrixelement}) is ``the $ij^{th}$ matrix element of the transformation $T$ in the basis $e$ is given by the inner product of the vector $\ket{e_i}$ and the vector $T\ket{e_j}$.''
-
-We introduce a bit of new notation.  Given a linear transformation $T$ and a basis $e$, we denote the matrix representing $T$ in $e$ by the symbol $[T]^e$ so that,
-\begin{displaymath} [T]^e = 
-\left[ \begin{array}{ccc} T_{11}^e & \cdots & T_{1n}^e \\ \vdots & \ddots & \vdots \\ T_{n1}^e & \cdots & T_{nn}^e \end{array} \right] = 
-\left[ \begin{array}{ccc} \braket{e_1}{Te_1} & \cdots & \braket{e_1}{Te_n} \\ \vdots & \ddots & \vdots \\ \braket{e_n}{Te_1} & \cdots & \braket{e_n}{Te_n} \end{array} \right]
+\begin{displaymath}
+  \left[ \begin{array}{ccc} 0&0&1 \end{array} \right] \left[ \begin{array}{ccc} a&b&c\\d&e&f\\g&h&i \end{array} \right] \left[ \begin{array}{c} 0\\1\\0 \end{array} \right] = h
+  \, .
 \end{displaymath}
-It is extremely important that you understand the difference between the transformation $T$ and the matrix $[T]^e$.  $T$ is not a matrix, it is a linear transformation.  It is represented by the matrix $[T]^e$ in the basis $e$.  The matrix representation of $T$ in another basis $f$ will in general be different.
+Simultaneous multiplication on the left by the transpose of basis element 3 and on the right by basis element number 2 returned the matrix element from the third row and second column.
+You can check that multiplication on the left by the transpose of basis element $i$ picks out the $i^{th}$ row of the matrix while multiplication on the right by basis element $j$ picks out the $j^{th}$ column so that performing both of these operations at once returns the $ij^{th}$ element of the matrix.
+Given a linear transformation $T$ and a basis $e$ we denote the $ij^{th}$ \newword{matrix element} of $T$ in this basis by $T^e_{ij}$.
+It is given by the equation
+  \begin{equation}\label{eq:matrixelement}
+  \framebox{$T^e_{ij} = \braket{e_i}{Te_j} \, .$}
+\end{equation}
+Note the similarity with equation (\ref{eq:vectorcomp}).
+Equation (\ref{eq:matrixelement}) makes it clear that matrix elements are basis dependent.
+Equation (\ref{eq:matrixelement}) is often written (especially by physicists) as $T^e_{ij} = \braket{e_i}{T|e_j}$ with the extra vertical line.
+The meaning is exactly the same, and we will use both notations in this document.
+We write the extra line sometimes to show explicity what is a vector and what is a transformation.
+In either case the English translation of Eq.~(\ref{eq:matrixelement}) is ``the $ij^{th}$ matrix element of the transformation $T$ in the basis $e$ is given by the inner product of the vector $\ket{e_i}$ and the vector $T\ket{e_j}$.''
 
-In general practice people rarely write down explicitly what basis they're using when they write down the matrix representation of a linear transformation. The reason is that it's usually obvious from the context of the calculation. Along that line of reasoning, in calculations in which we work in only one basis we will usually not write the subscript that refers to the basis.  For example, if only one basis, $a$ is being used in a calculation we will write $T_{ij}$ rather than $T^a_{ij}$ for matrix elements of $T$. In any context in which more than one basis is under consideration it is important to write the basis label on all matrices.
+We introduce a bit of new notation.
+Given a linear transformation $T$ and a basis $e$, we denote the matrix representing $T$ in $e$ by the symbol $[T]^e$ so that,
+\begin{displaymath}
+  [T]^e =
+  \left[ \begin{array}{ccc} T_{11}^e & \cdots & T_{1n}^e \\ \vdots & \ddots & \vdots \\ T_{n1}^e & \cdots & T_{nn}^e \end{array} \right]
+  = \left[ \begin{array}{ccc} \braket{e_1}{Te_1} & \cdots & \braket{e_1}{Te_n} \\ \vdots & \ddots & \vdots \\ \braket{e_n}{Te_1} & \cdots & \braket{e_n}{Te_n} \end{array} \right]
+  \, .
+\end{displaymath}
+It is critical to understand the difference between the transformation $T$ and the matrix $[T]^e$.
+$T$ is not a matrix, it is a linear transformation.
+It is represented by the matrix $[T]^e$ in the basis $e$.
+The matrix representation of $T$ in another basis $f$ will in general be different.
 
-\begin{flushleft}\textbf{Exercises}\end{flushleft}
+In general practice people rarely write down explicitly what basis they're using when they write down the matrix representation of a linear transformation.
+Perhaps the reaosn for that omission is that the choice of basis is apparent from the context of the calculation.
+Along that line of reasoning, in calculations in which we work in only one basis we will usually not write the subscript that refers to the basis.
+For example, if only one basis, $a$ is being used in a calculation we will write $T_{ij}$ rather than $T^a_{ij}$ for matrix elements of $T$.
+In any context in which more than one basis is under consideration it is important to write the basis label on all matrices.
+
+\leveldown{Exercises}
 \begin{itemize}
-\item[1)] This exercise is designed to show you why it is so natural to represent linear transformations with matrices.  Consider a vector space $\VS{}$ with an inner product and a basis $e$ that is orthonormal with respect to this inner product; $\braket{e_i}{e_j}=\delta_{ij}$.  Suppose we have two vectors $\ket{A}$ and $\ket{B}$ in $\VS{}$ which are related by a linear transformation $T$, \mbox{$\ket{A} = T\ket{B}$.}\\
-$a$. Write the equation $\ket{A} = T\ket{B}$ on a sheet of paper.\\
-$b$. Expand the vectors $\ket{A}$ and $\ket{B}$ as sums using the basis $e$.  Use the letter $k$ as your index on the sum on the left side of the equation and use the letter $j$ as the index of your sum on the right hand side.  Note that you can move the transformation $T$ inside the sum on the right hand side because it is linear.\\
-$c$. Take the inner product of each side of your equation with the basis vector $\ket{e_i}$ and simplify your equation using the properties of the inner product, the definition of matrix elements (equation \ref{eq:matrixelement}), and the orthonormality of the basis $e$.  You should find that the left side no longer has a sum while the sum on the right is the definition of matrix multiplication. You have now shown that when working in a particular basis, you can find the components of a vector resulting from a linear transformation of another vector by doing matrix multiplication. \\
-$d$. Consider two linear transformations $S$ and $T$ which have matrices $[S]$ and $[T]$ in some basis.  Denote the composition $S \circ T$ by $ST$.  Prove that the matrix representing $ST$ is given by the matrix product $[S][T]$.
-\item[2)] $a$. Consider the linear transformation $R_{\theta}$ of rotation by $\theta$ radians counterclockwise in the two dimensional plane.  Construct the matrix for $R_{\theta}$ in the basis composed of the two unit vectors along the x and y axes.\\$b$.  Use the results of part $a$ of this exercise and part $d$ of the previous exercise to come up with a cute way to derive the sum identities for sine and cosine.
+  \item[1.] This exercise is designed to show you why it is so natural to represent linear transformations with matrices.  Consider a vector space $\VS{}$ with an inner product and a basis $e$ that is orthonormal with respect to this inner product; $\braket{e_i}{e_j}=\delta_{ij}$.  Suppose we have two vectors $\ket{A}$ and $\ket{B}$ in $\VS{}$ which are related by a linear transformation $T$, \mbox{$\ket{A} = T\ket{B}$.}
+  \begin{itemize}
+    \item[a.] Write the equation $\ket{A} = T\ket{B}$ on a sheet of paper.
+    \item[b.] Expand the vectors $\ket{A}$ and $\ket{B}$ as sums using the basis $e$.
+      Use the letter $k$ as your index on the sum on the left side of the equation and use the letter $j$ as the index of your sum on the right hand side.
+      Note that you can move the transformation $T$ inside the sum on the right hand side because it is linear.
+    \item[c.] Take the inner product of each side of your equation with the basis vector $\ket{e_i}$ and simplify your equation using the properties of the inner product, the definition of matrix elements (equation \ref{eq:matrixelement}), and the orthonormality of the basis $e$.
+      You should find that the left side no longer has a sum while the sum on the right is the definition of matrix multiplication.
+      You have now shown that when working in a particular basis, you can find the components of a vector resulting from a linear transformation of another vector by doing matrix multiplication.
+    \item[d.] Consider two linear transformations $S$ and $T$ which have matrices $[S]$ and $[T]$ in some basis.
+      Denote the composition $S \circ T$ by $ST$.
+      Prove that the matrix representing $ST$ is given by the matrix product $[S][T]$.
+  \end{itemize}
+  \item[2.]
+    \begin{itemize}
+      \item[a.] Consider the linear transformation $R_{\theta}$ of rotation by $\theta$ radians counterclockwise in the two dimensional plane.
+        Construct the matrix for $R_{\theta}$ in the basis composed of the two unit vectors along the x and y axes.
+      \item[b.] Use the results of part $a$ of this exercise and part $d$ of the previous exercise to come up with a cute way to derive the sum identities for sine and cosine.
+    \end{itemize}
 \end{itemize}
-%%%subsection - Dual Transformations and Eigenvectors%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\levelstay{Dual Transformations and Eigenvectors}
-Assume in this section that all matrices are taken with respect to one particular basis.  We will not write the superscript basis label as it is to be understood.
 
-Anyone reading this document has transposed a matrix.  Now we can ask, if a matrix represents an abstract linear transformation what does its transpose represent?  We can investigate this question by looking at inner products.  Let $[v]$ and $[w]$ be the matrices for two vectors $\ket{v}$ and $\ket{w}$ and let $[T]$ be the matrix for transformation $T$.  Look at the inner product of $\ket{v}$ and $\ket{Tw}$,\footnote{Recall that for any two matrices $[A]$ and $[B]$ we have $ ([A][B])^{\top} = [B]^{\top}[A]^{\top}$.}\footnote{Also recall that $\sim$ means ``is represented by.''}
-\begin{displaymath} \braket{v}{Tw} \sim [v]^{\top}[Tw] = [v]^{\top}[T][w] = ([T]^{\top}[v])^{\top}[w] \sim \braket{T^{\dag}v}{w} \end{displaymath}
-where we've invented the symbol $T^{\dag}$ to mean ``the transformation whose matrix is $[T]^{\top}$.''  This equation \emph{defines} the transformation $T^{\dag}$.  Let's say this again in a formal definition.
-%%Definition of Dual Transformation
+\levelup{Dual transformations and eigenvectors}
+
+Assume in this section that all matrices are taken with respect to one particular basis.
+We will not write the superscript basis label as it is to be understood.
+
+Anyone reading this document has transposed a matrix.
+Now we can ask, if a matrix represents an abstract linear transformation what does its transpose represent?
+We can investigate this question by looking at inner products.
+Let $[v]$ and $[w]$ be the matrices for two vectors $\ket{v}$ and $\ket{w}$ and let $[T]$ be the matrix for transformation $T$.
+Look at the inner product of $\ket{v}$ and $\ket{Tw}$,\footnote{Recall that for any two matrices $[A]$ and $[B]$ we have $ ([A][B])^{\top} = [B]^{\top}[A]^{\top}$.}\footnote{Also recall that $\sim$ means ``is represented by.''}
+\begin{displaymath}
+  \braket{v}{Tw} \sim [v]^{\top}[Tw] = [v]^{\top}[T][w] = ([T]^{\top}[v])^{\top}[w] \sim \braket{T^{\dag}v}{w}
+\end{displaymath}
+where we've invented the symbol $T^{\dag}$ to mean ``the transformation whose matrix is $[T]^{\top}$.''
+This equation defines the transformation $T^{\dag}$.
+Let's say this again in a formal definition.
+
 \begin{definition}[Dual transformation]
 Given a linear transformation $T$ the dual of $T$, denoted $T^{\dag}$, is the unique transformation satisfying equation
-\begin{displaymath} \braket{v}{Tw} = \braket{T^{\dag}v}{w} \end{displaymath}
-for all vectors $\ket{v}$ and $\ket{w}$. \quad $\heartsuit$
+\begin{displaymath}
+  \braket{v}{Tw} = \braket{T^{\dag}v}{w}
+\end{displaymath}
+for all vectors $\ket{v}$ and $\ket{w}$.
 \end{definition}
-The transformation $T^{\dag}$ goes by several different names.  It is alternately called the \textbf{dual} of $T$, the \textbf{adjoint} of $T$, the \textbf{Hermitian conjugate} of $T$, or as \textbf{T dagger}.  It is very easy to show that given a transformation $T$, the dual transformation $T^{\dag}$ exists and is unique.  It is also easy to show starting from the formal definition of $T^{\dag}$ that the matrix for $T^{\dag}$ is the transpose of the matrix for $T$.  In other words, \mbox{$[T^{\dag}] = [T]^{\top}$.}  The proofs of these two statements are exercises.
+The transformation $T^\dag$ goes by several different names.
+It is alternately called the \newword{dual} of $T$, the \newword{adjoint} of $T$, the \newword{conjugate} of $T$, or as \newword{$T$ dagger}.
+It can be shown that, given a transformation $T$, the dual transformation $T^{\dag}$ exists and is unique.
+It is also easy to show starting from the formal definition of $T^\dag$ that the matrix for $T^\dag$ is the transpose of the matrix for $T$.
+In other words, \mbox{$[T^{\dag}] = [T]^{\top}$.}
+The proofs of these two statements are exercises.
 
-\begin{flushleft}\textbf{Exercises}\end{flushleft}
+\leveldown{Exercises}
 \begin{itemize}
-\item[1)] Prove, using our formal definition, that for any linear transformation $T$ the transformation $T^{\dag}$ exists and is unique.
-\item[2)] Prove, again using the formal definition, that $[T^{\dag}] = [T]^{\top}$.
+  \item[1.] Prove, using our formal definition, that for any linear transformation $T$ the transformation $T^{\dag}$ exists and is unique.
+  \item[2.] Prove, again using the formal definition, that $[T^{\dag}] = [T]^{\top}$.
 \end{itemize}
 
-A linear transformation on a real vector space that is equal to its own dual is called \textbf{symmetric}.  This is reasonable terminology because if a transformation is symmetric then we have:
-\begin{eqnarray*} T &=& T^{\dag}\\ \textrm{which means} \quad [T] &=& [T^{\dag}] = [T]^{\top} \\ \textrm{so} \quad [T] &=& [T]^{\top} \end{eqnarray*}
-which shows that the matrix $[T]$ is symmetric.  Note that we made no reference to a basis in this calculation.  This is because the calculation remains true in any basis.
+\levelup{Symmetric transformations}
+A linear transformation on a real vector space that is equal to its own dual is called \newword{symmetric}.
+This is reasonable terminology because if a transformation is symmetric then we have:
+\begin{align*}
+  T =& T^{\dag} \\
+  \textrm{which means} \quad
+  [T] =& [T^{\dag}] = [T]^{\top} \\
+  \textrm{so} \quad
+  [T] =& [T]^{\top}
+\end{align*}
+which shows that the matrix $[T]$ is symmetric.
+Note that we made no reference to a basis in this calculation.
+The calculation holds in any basis.
 
-For any linear transformation there is a special set of vectors associated to it called \textbf{eigenvectors}. In may cases these vectors form a basis and in those cases working in that basis makes solving physics problems extremely easy.
+\levelstay{Eigenvectors and eigenvalues}
 
-%%Definition of Eigenvector
+For any linear transformation there is a special set of vectors associated to it called \newword{eigenvectors}.
+In may cases these vectors form a basis and in those cases working in that basis makes solving physics problems extremely easy.
+
 \begin{definition}[Eigenvector and Eigenvalue]
-An \textbf{\emph{eigenvector}} of a transformation $T$ is a vector $\ket{v}$ such that \mbox{$T\ket{v} = \lambda \ket{v}$} where $\lambda$ is a scalar.  $\lambda$ is called the \emph{\textbf{eigenvalue of}} $\ket{v}$ \emph{\textbf{with respect to}} $T$. $\heartsuit$
+  An \newword{eigenvector} of a transformation $T$ is a vector $\ket{v}$ such that \mbox{$T\ket{v} = \lambda \ket{v}$} where $\lambda$ is a scalar.  $\lambda$ is called the \newword{eigenvalue of $\ket{v}$ with respect to $T$}.
 \end{definition}
 
 Given a trasformation $T$, if there is an orthonormal basis $S$ for which every member $\ket{s_i}$ is an eigenvector of $T$, \mbox{$T\ket{s_i}=\lambda_i\ket{s_i}$}, then the matrix for $T$ takes a particularly special form in this basis,
-\begin{eqnarray*}
-T^{S}_{ij} &=& \braket{s_i}{T|s_j}\\
-&=& \braket{s_i}{\lambda _j|s_j}\\
-&=& \lambda _j \braket{s_i}{s_j}\\
-&=& \lambda _j \delta _{ij}\\
-\textrm{so then} \qquad [T]^S &=& \left[ \begin{array}{ccc} \lambda_1 & & 0 \\ & \ddots & \\ 0 & & \lambda_n \end{array} \right].
-\end{eqnarray*}
-This shows that the matrix for $T$ is diagonal in $S$ and that the diagonal entries are the eigenvalues of $T$.  You may have learned in linear algebra the following extremely important fact:
+\begin{align*}
+  T^{S}_{ij} &= \braket{s_i}{T|s_j}\\
+  &= \braket{s_i}{\lambda _j|s_j}\\
+  &= \lambda _j \braket{s_i}{s_j}\\
+  &= \lambda _j \delta _{ij}\\
+\textrm{so then} \qquad
+  [T]^S &= \left[ \begin{array}{ccc} \lambda_1 & & 0 \\ & \ddots & \\ 0 & & \lambda_n \end{array} \right]
+  \, .
+\end{align*}
+Therefore, the matrix for $T$ is diagonal in $S$ and the diagonal entries are the eigenvalues of $T$.
+You may have learned in linear algebra the following extremely important fact:
 \begin{center} \emph{If $T$ is symmetric then there exists an orthonormal basis $S = \{\ket{s_1}, \ldots, \ket{s_n} \}$ such that for all $i$ $T\ket{s_i} = \lambda_i\ket{s_i}$.  That is, for a symmetric transformation $T$ there is always an orthonormal basis consisting entirely of eigenvectors of $T$.} \end{center}
 This is important because as we mentioned at the end of section 1.2, finding a basis in which the linear transformation in our coupled mass problem is diagonal would allow us to solve the equations of motion.
 
-In fact, finding a basis that diagonalizes a linear transformation is one of the most basic steps in solving an enormous range of physics problems.  For example in electrodynamics and quantum mechanics courses we learn about Bessell functions, Legendre polynomials, and spherical harmonics in the context of solving the equation $\nabla ^2 \Phi = 0$ where in electrodynamics $\Phi$ is the electric potential and in quantum mechanics $\Phi$ is the wavefunction of a particle.  In either case the $\nabla ^2$ operation is a linear transformation on the vector space of functions and the Bessell functions, Legendre polynomials, or spherical harmonics are just its eigenvectors.  It's alright if you don't really understand what was just said, but it is good to have heard it so that you will have a more comprehensive understanding of what's going on when you learn about these topics.
+In fact, finding a basis that diagonalizes a linear transformation is one of the most basic steps in solving an enormous range of physics problems.
+For example in electrodynamics and quantum mechanics courses we learn about Bessell functions, Legendre polynomials, and spherical harmonics in the context of solving the equation $\nabla ^2 \Phi = 0$ where in electrodynamics $\Phi$ is the electric potential and in quantum mechanics $\Phi$ is the wavefunction of a particle.
+In either case the $\nabla ^2$ operation is a linear transformation on the vector space of functions and the Bessell functions, Legendre polynomials, or spherical harmonics are just its eigenvectors.
+It's alright if you don't really understand what was just said, but it is good to have heard it so that you will have a more comprehensive understanding of what's going on when you learn about these topics.
 
-\begin{flushleft}\textbf{Exercises}\end{flushleft}
+\leveldown{Exercises}
 \begin{itemize}
-\item[1)] Let $R_{\theta}$ denote the linear transformation of a rotation by $\theta$ in the two dimensional plane. Find the eigenvalues of $R_{\theta}$ in terms of $\theta$.  What are the eigenvalues in the special case of $\theta = \frac{\pi}{2}$?   Why is this so interesting?
+  \item[1.] Let $R_{\theta}$ denote the linear transformation of a rotation by $\theta$ in the two dimensional plane. Find the eigenvalues of $R_{\theta}$ in terms of $\theta$.  What are the eigenvalues in the special case of $\theta = \frac{\pi}{2}$?   Why is this so interesting?
 \end{itemize}
 
-%%%subsection Changing Basis%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\levelstay{Changing Basis}
+\levelup{Changing basis}
+
 Everything we've discussed has aimed to get us to this section.  We can use equations (\ref{eq:vectorcomp}) and (\ref{eq:matrixelement}) to see how vector components and matrix elements change when we change basis.  Consider the following problem that occurs all of the time in classical mechanics, quantum mechanics, electrodynamics and all other branches of physics.  Let $\ket{v}$ be a vector in a vector space $\VS{}$.  Suppose we have some basis $e$ for $\VS{}$ and suppose that we know the components of $\ket{v}$ in this basis, ie. we know the numbers $v^e_i = \braket{e_i}{v}$.  Then $\ket{v}$ is represented in this basis by the column matrix,
 \begin{displaymath}
 [v]^e = \left[ \begin{array}{c} v^e_1 \\ \vdots \\ v^e_n \end{array} \right] \end{displaymath}
@@ -253,3 +370,4 @@ x_2(t) &=& \frac{1}{\sqrt{2}}[A\cos(\omega_0(t)+B) - C\cos(\sqrt{3}\omega_0(t) +
 \end{eqnarray*}
 This is the solution that we set out to find.
 \begin{flushright}$\clubsuit$\end{flushright}%%%END physical example%%%
+
