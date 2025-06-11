@@ -1,0 +1,48 @@
+\levelstay{Introduction - The Big Picture}
+
+This section introduces the main message of the document by dissecting an extremely simple idea in detail.
+In linear algebra books and courses, the archetypical vector space is the set of tuples of $n$ numbers, called $\reals^n$.
+It's easy to see that this set is indeed a vector space: you can add n-tuples together and multiply them by scalars; for example $(1,4,3) + (0,1,5) = (1,5,8)$.
+Of course, in applications, we are not intrinsically interested in the mathematical space $\reals^n$ itself but rather we use elements in $\reals^n$ to represent the objects of interest.
+For example, we can use lists of two numbers to represent displacement in a two dimensional plane.
+In Figure~\ref{fig:ch.finite_dimensions.sec.big_picture:arrows}\,(a) we show two arrows $\ket{u}$ and $\ket{v}$, each of length 1.
+These arrows exist on the page without any further mathematical representation.
+If we let $\ket{x}$ represent a unit arrow along the $x$ axis and $\ket{y}$ represent a unit arrow along the $y$ axis, then our two arrows could represented as,
+\begin{align}
+  \ket{u}
+  &= \frac{1}{\sqrt{2}} \left( \ket{x} + \ket{y} \right) \sim \frac{1}{\sqrt{2}} \left[ \begin{array}{c} 1 \\ 1 \end{array} \right] \\
+  \ket{v}
+  &= \frac{1}{\sqrt{2}} \left( -\ket{x} + \ket{y}\right) \sim \frac{1}{\sqrt{2}} \left[ \begin{array}{c} -1 \\ 1 \end{array} \right]
+\end{align}
+This representation is useful for several reasons including that it enables finding the arrow we'd get by ``summing'' $\ket{u}$ and $\text{v}$ tip to tail, as shown in Fig.~\ref{fig:ch.finite_dimensions.sec.big_picture:arrows}\,(b).
+Adding the tuples together gives
+\begin{displaymath}
+  \ket{u} + \ket{v} = \frac{1}{\sqrt{2}} \left( \ket{x} + \ket{y} - \ket{x} + \ket{y} \right) = \frac{\ket{y}}{\sqrt{2}}
+  \sim
+  \begin{bmatrix}
+    \sqrt{2} \\
+    0
+  \end{bmatrix}
+\end{displaymath}
+which we interpret to mean an arrow of length $\sqrt{2}$ pointing directly upward on the page, which is the correct result of summing the arrows.
+
+We could choose another set basis axes as shown by $\ket{x'}$ and $\ket{y'}$ in Fig.~\ref{fig:ch.finite_dimensions.sec.big_picture:arrows}\,(c).
+Then our arrows are represented as
+\begin{align}
+  \ket{u}
+    &= \ket{x'} \sim \left[\begin{array}{c} 1 \\ 0 \end{array} \right] \\
+  \ket{v}
+    &= \ket{y'} \sim \left[\begin{array}{c} 0 \\ 1 \end{array} \right]
+  \, .
+\end{align}
+The arrows $\ket{u}$ and $\ket{v}$ didn't change but the tuples in $\reals^2$ representing them did change; in fact they became simpler, having only one nonzero entry each instead of two.
+That's the guiding principle of this document: the tuples of numbers (or in infinite dimensions, the functions) that we use to represent things depend on the choice of basis.
+So, when we encounter tuples of numbers in science or math, it may be useful to consider the underlying objects and consider whether or not there's a basis where the calculation would be simplified or where the numbers representing the underlying objects would be more intuitive.
+
+The rest of this document uses that principle to develop the mathematics behind changing basis in a language that helps draw attention to the fact that the tuples of numbers and matrices involved are all representations of more fundamental underlying objects.
+We then derive the Fourier transform as the result of an obvious choice of basis when dealing with differential equations.
+
+\quickfig{\columnwidth}
+{arrows.pdf}
+{Arrows in a plane. (a) Two arrows, $\ket{u}$ and $\ket{v}$. (b) $\ket{x}$ and $\ket{y}$ (grey arrows) as a basis. Adding $\ket{u}$ and $\ket{v}$ tip-to-tail results in a new arrow (green) pointing straight up, with length $\sqrt{2}$. (c) A different basis in which $\ket{u}$ and $\ket{v}$ are congruent with the basis arrows themselves.}
+{fig:ch.finite_dimensions.sec.big_picture:arrows}
