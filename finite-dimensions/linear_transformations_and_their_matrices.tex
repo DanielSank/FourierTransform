@@ -18,7 +18,7 @@ Here's a formal definition:
   In keeping with the convention wherein the sum $\ket{v} + \ket{w}$ can be written as $\ket{v+w}$ we will sometimes lable a transformed vector $T\ket{v}$ as $\ket{Tv}$.
 \end{definition}
 
-\begin{flushleft}\textbf{Example of a Linear Transformation:}\end{flushleft}
+\begin{flushleft}\textbf{Example of a Linear Transformation}\end{flushleft}
 
 You know of many linear transformations from physics.
 Electrostatics provides a nice example.
@@ -99,13 +99,13 @@ We now make another convention:
 
 \textit{In all subsequent discussion we use the term \emph{\textbf{basis}} to mean \emph{\textbf{orthonormal basis}} unless otherwise indicated}.
 
-\levelstay{Exercises}
+\levelstay{Inner products - Exercises}
 \begin{itemize}
   \item[1)] Prove equation (\ref{eq:vectorcomp}).  This is a two or three line problem.
   \item[2)] Consider an inner product $\braket{~}{~}$.  Show that if we work in a basis $Q$ that is orthonormal with respect to this inner product, then the inner product is always given by $\sum_{i=1}^n v_i^Q w_i^Q$.  This shows that inner products are always just dot products as long as you work in a basis that is orthonormal with respect to the inner product in question.
 \end{itemize}
 
-\levelup{Matrix elements}
+\levelstay{Matrix elements}
 
 When we learn about linear transformations in linear algebra courses we are usually thinking in the context of matrices.
 However, as we have just seen in the example of the mapping between charge distributions and electric potentials, a linear transformation can appear as an integral operation having no obvious relation to matrices
@@ -163,39 +163,37 @@ Along that line of reasoning, in calculations in which we work in only one basis
 For example, if only one basis, $a$ is being used in a calculation we will write $T_{ij}$ rather than $T^a_{ij}$ for matrix elements of $T$.
 In any context in which more than one basis is under consideration it is important to write the basis label on all matrices.
 
-\leveldown{Exercises}
+\levelstay{Matrix elements - exercises}
 \begin{itemize}
-  \item[1.] This exercise is designed to show you why it is so natural to represent linear transformations with matrices.  Consider a vector space $\VS{}$ with an inner product and a basis $e$ that is orthonormal with respect to this inner product; $\braket{e_i}{e_j}=\delta_{ij}$.  Suppose we have two vectors $\ket{A}$ and $\ket{B}$ in $\VS{}$ which are related by a linear transformation $T$, \mbox{$\ket{A} = T\ket{B}$.}
+  \item[1)] This exercise is designed to show you why it is so natural to represent linear transformations with matrices.  Consider a vector space $\VS{}$ with an inner product and a basis $e$ that is orthonormal with respect to this inner product; $\braket{e_i}{e_j}=\delta_{ij}$.  Suppose we have two vectors $\ket{A}$ and $\ket{B}$ in $\VS{}$ which are related by a linear transformation $T$, \mbox{$\ket{A} = T\ket{B}$.}
   \begin{itemize}
-    \item[a.] Write the equation $\ket{A} = T\ket{B}$ on a sheet of paper.
-    \item[b.] Expand the vectors $\ket{A}$ and $\ket{B}$ as sums using the basis $e$.
+    \item[a)] Write the equation $\ket{A} = T\ket{B}$ on a sheet of paper.
+    \item[b)] Expand the vectors $\ket{A}$ and $\ket{B}$ as sums using the basis $e$.
       Use the letter $k$ as your index on the sum on the left side of the equation and use the letter $j$ as the index of your sum on the right hand side.
       Note that you can move the transformation $T$ inside the sum on the right hand side because it is linear.
-    \item[c.] Take the inner product of each side of your equation with the basis vector $\ket{e_i}$ and simplify your equation using the properties of the inner product, the definition of matrix elements (equation \ref{eq:matrixelement}), and the orthonormality of the basis $e$.
+    \item[c)] Take the inner product of each side of your equation with the basis vector $\ket{e_i}$ and simplify your equation using the properties of the inner product, the definition of matrix elements (equation \ref{eq:matrixelement}), and the orthonormality of the basis $e$.
       You should find that the left side no longer has a sum while the sum on the right is the definition of matrix multiplication.
       You have now shown that when working in a particular basis, you can find the components of a vector resulting from a linear transformation of another vector by doing matrix multiplication.
-    \item[d.] Consider two linear transformations $S$ and $T$ which have matrices $[S]$ and $[T]$ in some basis.
+    \item[d)] Consider two linear transformations $S$ and $T$ which have matrices $[S]$ and $[T]$ in some basis.
       Denote the composition $S \circ T$ by $ST$.
       Prove that the matrix representing $ST$ is given by the matrix product $[S][T]$.
   \end{itemize}
-  \item[2.]
+  \item[2)] Consider the linear transformation $R_{\theta}$ of rotation by $\theta$ radians counterclockwise in the two dimensional plane.
     \begin{itemize}
-      \item[a.] Consider the linear transformation $R_{\theta}$ of rotation by $\theta$ radians counterclockwise in the two dimensional plane.
-        Construct the matrix for $R_{\theta}$ in the basis composed of the two unit vectors along the x and y axes.
-      \item[b.] Use the results of part $a$ of this exercise and part $d$ of the previous exercise to come up with a cute way to derive the sum identities for sine and cosine.
+      \item[a)] Construct the matrix for $[R_\theta]$ in the basis composed of the two unit vectors along the x and y axes.
+      \item[b)] Now consider another angle $\phi$ and associated rotation $R_\phi$.
+        Use the results of part $d$ of the previous exercise to prove that the matrix representing the rotation $R_{\theta + \phi}$ must be the matrix product $[R_\theta][R_\phi]$.
+      \item[c)] Do the matrix multiplication and derive the sum identities for sine and cosine by comparing $[R_{\theta + \phi}]$ with $[R_\theta][R_\phi]$.
     \end{itemize}
 \end{itemize}
 
-\levelup{Dual transformations and eigenvectors}
+\levelstay{Dual transformations}
 
-Assume in this section that all matrices are taken with respect to one particular basis.
-We will not write the superscript basis label as it is to be understood.
-
-Anyone reading this document has transposed a matrix.
+Readers of this document have likely transposed a matrix.
 Now we can ask, if a matrix represents an abstract linear transformation what does its transpose represent?
 We can investigate this question by looking at inner products.
 Let $[v]$ and $[w]$ be the matrices for two vectors $\ket{v}$ and $\ket{w}$ and let $[T]$ be the matrix for transformation $T$.
-Look at the inner product of $\ket{v}$ and $\ket{Tw}$,\footnote{Recall that for any two matrices $[A]$ and $[B]$ we have $ ([A][B])^{\top} = [B]^{\top}[A]^{\top}$.}\footnote{Also recall that $\sim$ means ``is represented by.''}
+Look at the inner product of $\ket{v}$ and $\ket{Tw}$,\footnote{Recall that for any two matrices $[A]$ and $[B]$ we have $ ([A][B])^{\top} = [B]^{\top}[A]^{\top}$.}
 \begin{displaymath}
   \braket{v}{Tw} \sim [v]^{\top}[Tw] = [v]^{\top}[T][w] = ([T]^{\top}[v])^{\top}[w] \sim \braket{T^{\dag}v}{w}
 \end{displaymath}
@@ -217,13 +215,13 @@ It is also easy to show starting from the formal definition of $T^\dag$ that the
 In other words, \mbox{$[T^{\dag}] = [T]^{\top}$.}
 The proofs of these two statements are exercises.
 
-\leveldown{Exercises}
+\levelstay{Dual transformations - Exercises}
 \begin{itemize}
-  \item[1.] Prove, using our formal definition, that for any linear transformation $T$ the transformation $T^{\dag}$ exists and is unique.
-  \item[2.] Prove, again using the formal definition, that $[T^{\dag}] = [T]^{\top}$.
+  \item[1)] Prove, using our formal definition, that for any linear transformation $T$ the transformation $T^{\dag}$ exists and is unique.
+  \item[2)] Prove, again using the formal definition, that $[T^{\dag}] = [T]^{\top}$.
 \end{itemize}
 
-\levelup{Symmetric transformations}
+\levelstay{Symmetric transformations}
 A linear transformation on a real vector space that is equal to its own dual is called \newword{symmetric}.
 This is reasonable terminology because if a transformation is symmetric then we have:
 \begin{align*}
@@ -235,7 +233,7 @@ This is reasonable terminology because if a transformation is symmetric then we 
 \end{align*}
 which shows that the matrix $[T]$ is symmetric.
 Note that we made no reference to a basis in this calculation.
-The calculation holds in any basis.
+If a transformation is symmetric, then its matrix representation is symmetric in any orthnormal basis.
 
 \levelstay{Eigenvectors and eigenvalues}
 
@@ -266,12 +264,12 @@ For example in electrodynamics and quantum mechanics courses we learn about Bess
 In either case the $\nabla ^2$ operation is a linear transformation on the vector space of functions and the Bessell functions, Legendre polynomials, or spherical harmonics are just its eigenvectors.
 It's alright if you don't really understand what was just said, but it is good to have heard it so that you will have a more comprehensive understanding of what's going on when you learn about these topics.
 
-\leveldown{Exercises}
+\levelstay{Eigenvectors and eigenvalues - Exercises}
 \begin{itemize}
-  \item[1.] Let $R_{\theta}$ denote the linear transformation of a rotation by $\theta$ in the two dimensional plane. Find the eigenvalues of $R_{\theta}$ in terms of $\theta$.  What are the eigenvalues in the special case of $\theta = \frac{\pi}{2}$?   Why is this so interesting?
+  \item[1)] Let $R_{\theta}$ denote the linear transformation of a rotation by $\theta$ in the two dimensional plane. Find the eigenvalues of $R_{\theta}$ in terms of $\theta$.  What are the eigenvalues in the special case of $\theta = \frac{\pi}{2}$?   Why is this so interesting?
 \end{itemize}
 
-\levelup{Changing basis}
+\levelstay{Changing basis}
 
 Everything we've discussed has aimed to get us to this section.  We can use equations (\ref{eq:vectorcomp}) and (\ref{eq:matrixelement}) to see how vector components and matrix elements change when we change basis.  Consider the following problem that occurs all of the time in classical mechanics, quantum mechanics, electrodynamics and all other branches of physics.  Let $\ket{v}$ be a vector in a vector space $\VS{}$.  Suppose we have some basis $e$ for $\VS{}$ and suppose that we know the components of $\ket{v}$ in this basis, ie. we know the numbers $v^e_i = \braket{e_i}{v}$.  Then $\ket{v}$ is represented in this basis by the column matrix,
 \begin{displaymath}
@@ -282,56 +280,111 @@ Note that this definition makes it very easy to construct the matrix for $U$.  O
 \begin{displaymath}
 [U]^e = \left[ \begin{array}{ccc} \braket{e_1}{f_1} & \cdots & \braket{e_1}{f_n} \\ \vdots & \ddots & \vdots \\ \braket{e_n}{f_1} & \cdots & \braket{e_n}{f_n} \end{array} \right]
 \end{displaymath}
-The following exercise will make sure you understand this formula.
+Exercise 1 at the end of this section is meant to ensure you understand this formula.
 
-\begin{flushleft}\textbf{Exercises}\end{flushleft}
-\begin{itemize}\item[1)] Let $e$ be the basis consisting of one vector along the x-axis and another along the y-axis and let $f$ be another basis consisting of one vector along the line $y = x$ and another along the line $y = -x$.  Write down the matrix $[U]^e$ that has the property $U\ket{e_i}=\ket{f_i}$.  Assume all basis vectors have unit length.
-\end{itemize}
+
 Now we can address our original problem of finding the numbers $v_i^f$ if we know $v_i^e$.  The calculation is very simple,
-\begin{eqnarray*}
-v^f_i &=& \braket{f_i}{v}\\
-      &=& \braket{Ue_i}{v}\\
-      &=& \braket{e_i}{U^{\dag}v}\\
-v^f_i &=& (U^{\dag}v)^e_i
-\end{eqnarray*}
+\begin{align*}
+v^f_i
+  &= \braket{f_i}{v}\\
+  &= \braket{Ue_i}{v}\\
+  &= \braket{e_i}{U^{\dag}v}\\
+  &= (U^{\dag}v)^e_i
+\end{align*}
 \begin{equation}\label{eq:unitaryforvector}
-\framebox{$v^f_i = (U^{\dag}v)^e_i$ \qquad or \qquad $[v]^f = [U^{\dag}v]^e = [U]^{e\top}[v]^e$}
+  \framebox{$v^f_i = (U^{\dag}v)^e_i$ \qquad or \qquad $[v]^f = [U^{\dag}v]^e = [U]^{e\top}[v]^e \, .$}
 \end{equation}
-What equation (\ref{eq:unitaryforvector}) says in English is that the components of the vector $\ket{v}$ in basis $f$ are the same as the components of the vector $\ket{U^{\dag}v}$ in basis $e$.  This calculation also shows that once we know $[U]^e$ the computation of $[v]^f$ involves only simply operations: we must take the transpose of $[U]^e$ and then carry out a matrix multiplication.
+In English, Eq.~(\ref{eq:unitaryforvector}) says that the components of the vector $\ket{v}$ in basis $f$ are the same as the components of the vector $\ket{U^{\dag}v}$ in basis $e$.
+This calculation also shows that once we know $[U]^e$ the computation of $[v]^f$ involves only simply operations: we must take the transpose of $[U]^e$ and then carry out a matrix multiplication.
 
-Now let $T$ be a linear transformation on vector space $\VS{}$.  Suppose we know the matrix elements of $T$ in basis $e$, ie. we know the numbers $T^{e}_{ij} = \braket{e_i}{Te_j}$.  Then $T$ is represented in the basis $e$ by the matrix,
-\begin{displaymath} [T]^e = \left[ \begin{array}{ccc} T^e_{11} & \cdots & T^e_{1n}\\ \vdots & \ddots & \vdots \\ T^e_{n1}&\cdots & T^e_{nn} \end{array} \right] \end{displaymath}
-What does $T$ look like in the basis $f$?  To answer this question we have to calculate the numbers $T^f_{ij} = \braket{f_i}{T|f_j}$.  To do this we again use the linear transformation $U$.  We calculate,
-\begin{eqnarray*}
-T^f_{ij} &=& \braket{f_i}{T|f_j}\\
-         &=& \braket{Ue_i}{T|Ue_j}\\
-         &=& \braket{e_i}{U^{\dag}TU|e_j}\\
-T^f_{ij} &=& (U^{\dag}TU)^e_{ij}
-\end{eqnarray*}
+Now let $T$ be a linear transformation on vector space $\VS{}$.
+Suppose we know the matrix elements of $T$ in basis $e$, ie. we know the numbers $T^{e}_{ij} = \braket{e_i}{Te_j}$.
+Then $T$ is represented in the basis $e$ by the matrix,
+\begin{displaymath}
+  [T]^e = \left[ \begin{array}{ccc} T^e_{11} & \cdots & T^e_{1n}\\ \vdots & \ddots & \vdots \\ T^e_{n1}&\cdots & T^e_{nn} \end{array} \right]
+  \, .
+\end{displaymath}
+What does $T$ look like in the basis $f$?
+To answer this question we have to calculate the numbers $T^f_{ij} = \braket{f_i}{T|f_j}$.
+To do this we again use the linear transformation $U$,
+\begin{align*}
+T^f_{ij}
+  &= \braket{f_i}{T|f_j}\\
+  &= \braket{Ue_i}{T|Ue_j}\\
+  &= \braket{e_i}{U^{\dag}TU|e_j}\\
+  &= (U^{\dag}TU)^e_{ij}
+\end{align*}
 \begin{equation}\label{eq:unitaryformatrix}
 \framebox{$T^{f}_{ij} = (U^{\dag}TU)^{e}_{ij}$ \qquad or \qquad $[T]^f = [U^{\dag}TU]^e = [U]^{e\top}[T]^e[U]^e$}
 \end{equation}
-Note the similarity with (\ref{eq:unitaryforvector}).  What equation (\ref{eq:unitaryformatrix}) says in English is that the matrix elements of the transformation $T$ in the basis $f$ are the same as the matrix elements of the transformation ($U^{\dag}TU$) in the basis $e$.  Therefore, if we know the matrices for $T$ and $U$ in our original basis $e$ we can compute the matrix elements of $T$ in the new basis $f$ by simple matrix multiplication.
+Note the similarity with (\ref{eq:unitaryforvector}).
+What equation (\ref{eq:unitaryformatrix}) says in English is that the matrix elements of the transformation $T$ in the basis $f$ are the same as the matrix elements of the transformation ($U^{\dag}TU$) in the basis $e$.
+Therefore, if we know the matrices for $T$ and $U$ in our original basis $e$ we can compute the matrix elements of $T$ in the new basis $f$ by simple matrix multiplication.
 
-Now we know how to switch from one basis $e$ to another basis $f$ as long as we know the components of the ``new'' basis vectors $\ket{f_i}$ with respect to the ``old'' basis $f$.  How do we go back from $f$ to $e$?   We solve for $v_i^e$ in terms of $v_i^f$,
-\begin{eqnarray*} v_i^e &=& \braket{e_i}{v} \\ \textrm{and since} \quad U\ket{e_i} &=& \ket{f_i} \quad \textrm{we have} \quad \ket{e_i} = U^{-1}\ket{f_i} \\ \textrm{so} \quad v_i^e &=& \braket{U^{-1}f_i}{v}. \end{eqnarray*}
-We need to evaluate $\braket{U^{-1}f_i}{v}$.  This introduces two new difficulties.  First, we have to find the matrix for $U$ with respect to $f$.  The second difficulty is that once we've found $[U]^f$ we have to find its inverse.  It turns out, however, that both of these difficulties disappear as we now explain.
+Now we know how to switch from one basis $e$ to another basis $f$ as long as we know the components of the ``new'' basis vectors $\ket{f_i}$ with respect to the ``old'' basis $f$.
+How do we go back from $f$ to $e$?
+We solve for $v_i^e$ in terms of $v_i^f$,
+\begin{align*}
+  v_i^e &= \braket{e_i}{v} \\
+  \textrm{and since} \quad
+    U\ket{e_i} &= \ket{f_i} \quad
+    \textrm{we have} \quad \ket{e_i} = U^{-1}\ket{f_i} \\
+  \textrm{so} \quad v_i^e &= \braket{U^{-1}f_i}{v} \,.
+\end{align*}
+We need to evaluate $\braket{U^{-1}f_i}{v}$, which introduces two new difficulties.
+First, we have to find the matrix for $U$ with respect to $f$.
+Second, once we've found $[U]^f$ we have to find its inverse.
+It turns out, however, that both of these difficulties disappear as we now explain.
 
-We defined $U$ by saying that it has the property that $U\ket{e_i} = \ket{f_i}$ where $e$ and $f$ are orthonormal bases.  Any transformation that carries one orthonormal basis to another in this mannar is called a \textbf{unitary transformation}.  Unitary transformations have the following useful property (proved in an exercise),
-\begin{displaymath} \framebox{$U^{-1} = U^{\dag}$.} \end{displaymath}
-This property means that the the difficulty in inverting $U$ disappears; we don't have to compute the inverse of $[U]^f$ because the inverse is just equal to the transpose, which is very easy to compute.
+We defined $U$ by saying that it has the property that $U\ket{e_i} = \ket{f_i}$ where $e$ and $f$ are orthonormal bases.
+Any transformation that carries one orthonormal basis to another in this mannar is called a \newword{unitary transformation}.
+Unitary transformations have the following useful property (proved in an exercise),
+\begin{displaymath}
+  \framebox{$U^{-1} = U^{\dag}$.}
+\end{displaymath}
+This property means that the the difficulty in inverting $U$ disappears; we don't have to compute the inverse of $[U]^f$ because the inverse is just equal to the transpose, which is easy to compute.
 
-The other difficulty was that whereas we showed that it's easy to compute $[U]^e$, we don't immediatly know how to compute $[U]^f$.  It conveniently turns out that $[U]^f = [U]^e$,
-\begin{eqnarray*} U^f_{ij} &=& \braket{f_i}{U|f_j} \\ &=& \braket{Ue_i}{U|Ue_j} \\ &=& \braket{e_i}{U^{\dag}UU|e_j} \\ 
-&=& \braket{e_i}{U^{-1}UU|e_j} \\ &=& \braket{e_i}{Ue_j} \\ U^f_{ij} &=& U^e_{ij}. \end{eqnarray*}
-Because of this equivalence we don't have to refer to $[U]^e$ and $[U]^f$, once the two involved bases are specified we can just talk about $[U]$.  Using these results we can go back to our goal of determining how to switch back from the new basis $f$ to the old basis $e$.  We had
-\begin{displaymath} v_i^e = \braket{U^{-1}f_i}{v}, \end{displaymath}
+The other difficulty was that whereas we showed that it's easy to compute $[U]^e$, we don't immediatly know how to compute $[U]^f$.
+It conveniently turns out that $[U]^f = [U]^e$,
+\begin{align*}
+  U^f_{ij}
+  &= \braket{f_i}{U|f_j} \\
+  &= \braket{Ue_i}{U|Ue_j} \\
+  &= \braket{e_i}{U^{\dag}UU|e_j} \\
+  &= \braket{e_i}{U^{-1}UU|e_j} \\
+  &= \braket{e_i}{Ue_j} \\
+  &= U^e_{ij}
+  \,.
+\end{align*}
+Because of this equivalence we don't have to refer to $[U]^e$ and $[U]^f$, once the two involved bases are specified we can just talk about $[U]$.
+Using these results we can go back to our goal of determining how to switch back from the new basis $f$ to the old basis $e$.
+We had
+\begin{displaymath}
+  v_i^e = \braket{U^{-1}f_i}{v} \, ,
+\end{displaymath}
 but using our two new results about $U$ this becomes simply
-\begin{displaymath} v_i^e = \braket{U^{\dag}f_i}{v} = \braket{f_i}{Uv} \end{displaymath}
-\begin{displaymath} \textrm{so} \qquad  \framebox{$v_i^e = (Uv)_i^f$ \qquad or \qquad $[v]^e =[Uv]^f = [U][v]^f$.} \end{displaymath}
-Note that we left the basis label off of $[U]$ because it is uncessesary as discussed above.  In English this says that the components of $\ket{v}$ with respect to $e$ are the same as the components of $\ket{Uv}$ with respect to $f$.  Compare this with equation (\ref{eq:unitaryforvector}).  A very similiar result which is similar to (\ref{eq:unitaryformatrix}) holds for changing matrix elements from $f$ to $e$.  These ideas are best understood through an example.  Naturally, we turn to our coupled oscillator.  This time we're going to completely solve it.
+\begin{displaymath}
+  v_i^e = \braket{U^{\dag}f_i}{v} = \braket{f_i}{Uv}
+\end{displaymath}
+\begin{displaymath}
+  \textrm{so} \qquad  \framebox{$v_i^e = (Uv)_i^f$ \qquad or \qquad $[v]^e =[Uv]^f = [U][v]^f$.}
+\end{displaymath}
+Note that we left the basis label off of $[U]$ because it is uncessesary as discussed above.
+In English this says that the components of $\ket{v}$ with respect to $e$ are the same as the components of $\ket{Uv}$ with respect to $f$.
+Compare this with equation (\ref{eq:unitaryforvector}).
+A very similiar result which is similar to (\ref{eq:unitaryformatrix}) holds for changing matrix elements from $f$ to $e$.
+These ideas are best understood through an example.
+Naturally, we turn to our coupled oscillator.
+This time we're going to completely solve it.
 
-\begin{flushleft}$\clubsuit$\end{flushleft}%%PHYSICAL EXAMPLE
+\levelstay{Changing basis - Exercises}
+\begin{enumerate}
+  \item[1)] Let $e$ be the basis consisting of one vector along the x-axis and another along the y-axis and let $f$ be another basis consisting of one vector along the line $y = x$ and another along the line $y = -x$.
+    Write down the matrix $[U]^e$ that has the property $U\ket{e_i}=\ket{f_i}$.
+    Assume all basis vectors have unit length.
+\end{enumerate}
+
+\begin{flushleft}$\clubsuit$\end{flushleft}
 We managed to cast our physical problem into matrix form in equation (\ref{eq:equationOfMotionMatrix}).  We noted that if we could find a basis in which the matrix for $P$ were diagonal then the problem would be easy to solve.  We do this now.  The matrix for $P$ in equation (\ref{eq:equationOfMotionMatrix}) is symmetric which means that the transformation $P$ is symmetric and so there is a basis composed entirely of eigenvectors of $P$.  You should know how to find them from linear algebra.  It turns out that the eigenvectors of $P$ are \mbox{$\ket{Y_1} = \frac{1}{\sqrt{2}}(\ket{X_1}+\ket{X_2})$} and \mbox{$\ket{Y_2} = \frac{1}{\sqrt{2}}(\ket{X_1}-\ket{X_2})$}.  Denote this new basis consisting of the vectors $\ket{Y_1}$ and $\ket{Y_2}$ by $Y$.  As we discussed, in order to find the matrix for $P$ in the new basis $Y$ we must construct the matrix for $U$ taking the original basis $X$ to the new basis $Y$.  The matrix for $U$ \emph{in either basis X or Y} is
 \begin{displaymath} [U] \qquad = \qquad \frac{1}{\sqrt{2}}\left[ \begin{array}{cc} 1&1 \\ 1&-1 \end{array} \right]. \end{displaymath}
 Now we can find the matrix for $P$ in the basis $Y$ using equation (\ref{eq:unitaryformatrix}),
